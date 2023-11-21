@@ -1,0 +1,14 @@
+.background_image {
+    /* position: absolute; */
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    
+    z-index: 1;
+
+    height: 200px;
+  }
+
+  #footerContainer > img{
+    display:hidden;
+  }

@@ -1,0 +1,19 @@
+.right_site_shape {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 37%, 0 89%);
+    clip-path: polygon(0 0, 100% 0, 100% 37%, 0 89%);
+   
+    
+
+    /* width: 0;
+    height: 0;
+    border-top: 100px solid red;
+    border-right: 100px solid transparent;
+    width: full; */
+}
+
+.left_side{
+    
+}
+.right_side{
+
+}
