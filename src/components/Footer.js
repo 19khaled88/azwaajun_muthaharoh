@@ -45,7 +45,7 @@ const Footer = () => {
 
 
   return (
-    <div className={`relative h-80 `} id=""  >
+    <div className="bg-emerald-300 " id=""  >
       {/* <Image
           width={3000}  //use the width of the image being used
           height={5000} //use the height of the image being used
@@ -54,7 +54,7 @@ const Footer = () => {
           alt="No Image"
           src={footer} //image saved in public/home
         /> */}
-      <div className='absolute bg-emerald-300 bottom-0 px-16 py-10 w-full  grid md:grid-cols-2 lg:grid-cols-3 md:gap-5'>
+      <div className='px-16 py-5 w-full  grid md:grid-cols-2 lg:grid-cols-3 md:gap-5'>
         <div className='col-span-1 my-3 md:my-10'>
           <p className='text-2xl font-bold drop-shadow-2xl text-stone-700'>Azwaajum Muthohharoh</p>
         </div>
@@ -66,7 +66,7 @@ const Footer = () => {
               <Link href="/" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'> Home</Link>
               <Link href="/ui/about" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'>About Us</Link>
               <Link href="/ui/faq" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'>FAQ</Link>
-              <Link href="/ui/contact" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'>Contact</Link>
+              <Link href="/ui/contact" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'>Contact us</Link>
 
             </div>
           </div>
@@ -113,11 +113,11 @@ const Footer = () => {
 
       </div>
 
-      <span className='bg-white h-1 w-11/12 mx-auto absolute bottom-10 inset-x-0'></span>
+      <p className='bg-red-600 h-1 w-11/12 mx-auto'></p>
 
-      <div className='absolute bottom-3 inset-x-0 w-5/6 mx-auto flex flex-row justify-between'>
+      <div className=' w-5/6 py-3 mx-auto flex flex-col md:flex-row justify-between'>
         <p className='text-sm'> © Copyright 2023 Azwaajum Muthohharoh. All rights reserved.</p>
-        <div className='flex flex-row gap-4 hidden lg:flex text-sm'>
+        <div className='flex flex-row gap-4 text-sm'>
           <Link href="">Privacy policy</Link>
           <Link href="">Terms & conditions</Link>
         </div>

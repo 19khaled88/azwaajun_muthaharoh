@@ -122,7 +122,7 @@ const Header = () => {
                 href="/ui/contact"
                 class="block py-2 md:text-lg lg:text-xl pl-3 pr-4 text-white rounded font-semibold md:p-0 "
               >
-                Contact
+                Contact us
               </Link>
             </li>
           </ul>
