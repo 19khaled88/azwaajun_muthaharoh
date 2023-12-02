@@ -1,6 +1,7 @@
 import FrontPage from '@/components/FrontPage'
-import Goal from '@/components/Goal'
+
 import RootLayout from '@/components/Layout'
+import StepsPage from '@/components/Steps'
 import SuccessStory from '@/components/SuccessStory'
 import { Inter } from 'next/font/google'
 
@@ -9,10 +10,10 @@ const inter = Inter({ subsets: ['latin'] })
 
 const Home=()=> {
   return (
-      <div>
+      <div className=''>
         <FrontPage />
         <SuccessStory />
-        <Goal />
+        <StepsPage />
       </div>
 
   

@@ -45,7 +45,7 @@ const Footer = () => {
 
 
   return (
-    <div className={`relative`} id=""  >
+    <div className={`relative h-80 `} id=""  >
       {/* <Image
           width={3000}  //use the width of the image being used
           height={5000} //use the height of the image being used
@@ -54,25 +54,26 @@ const Footer = () => {
           alt="No Image"
           src={footer} //image saved in public/home
         /> */}
-      <div className='absolute bg-emerald-300 bottom-0 px-16 pt-10 w-full h-64 grid grid-cols-2 lg:grid-cols-3 gap-5'>
-        <div className='col-span-1'>
+      <div className='absolute bg-emerald-300 bottom-0 px-16 py-10 w-full  grid md:grid-cols-2 lg:grid-cols-3 md:gap-5'>
+        <div className='col-span-1 my-3 md:my-10'>
           <p className='text-2xl font-bold drop-shadow-2xl text-stone-700'>Azwaajum Muthohharoh</p>
         </div>
 
-        <div className='col-span-1 lg:col-span-2 lg:flex-col-2 grid lg:grid-cols-2'>
+        <div className='col-span-1 my-3 md:my-10 lg:col-span-2 gap-2 md:gap-4 lg:gap-0 md:grid-cols-1 grid lg:grid-cols-2'>
           <div className='lg:col-span-1'>
             <h1 className='text-lg font-bold text-gray-600 mb-2 lg:mb-5'>Usefull Links</h1>
             <div className='flex lg:flex-col gap-2 text-md font-semibold text-gray-600'>
-              <Link href="home">Home</Link>
-              <Link href="package">About</Link>
-              <Link href="portfilio">Service</Link>
+              <Link href="/" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'> Home</Link>
+              <Link href="/ui/about" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'>About Us</Link>
+              <Link href="/ui/faq" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'>FAQ</Link>
+              <Link href="/ui/contact" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'>Contact</Link>
 
             </div>
           </div>
 
           <div className='flex flex-row lg:flex-col gap-3 lg:col-span-1'>
             <div>
-              <h1 className='text-lg font-bold text-gray-600 mb-2 hidden lg:flex lg:mb-5'>Follow Us</h1>
+              <h1 className='text-lg font-bold text-gray-600 mb-2  lg:flex lg:mb-3'>Follow Us</h1>
               <div className='flex flex-row gap-3'>
                 {
 
@@ -103,8 +104,8 @@ const Footer = () => {
               </div>
             </div>
             <div >
-              <h1 className='text-lg font-bold text-gray-600 mb-5 hidden lg:flex'>Our benefites</h1>
-              <h2></h2>
+              <h1 className='text-lg font-bold text-gray-600 mb-3  lg:flex'>Our benefites</h1>
+              <h2>For the sake of allah</h2>
             </div>
           </div>
         </div>
@@ -112,11 +113,11 @@ const Footer = () => {
 
       </div>
 
-      <span className='bg-white h-1 w-11/12 mx-auto absolute bottom-12 inset-x-0'></span>
+      <span className='bg-white h-1 w-11/12 mx-auto absolute bottom-10 inset-x-0'></span>
 
       <div className='absolute bottom-3 inset-x-0 w-5/6 mx-auto flex flex-row justify-between'>
-        <p> © Copyright 2023 Azwaajum Muthohharoh. All rights reserved.</p>
-        <div className='flex flex-row gap-4'>
+        <p className='text-sm'> © Copyright 2023 Azwaajum Muthohharoh. All rights reserved.</p>
+        <div className='flex flex-row gap-4 hidden lg:flex text-sm'>
           <Link href="">Privacy policy</Link>
           <Link href="">Terms & conditions</Link>
         </div>

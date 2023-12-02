@@ -4,7 +4,7 @@ import dot from '../../public/dots-removebg-preview.png'
 import styles from '../styles/frontPage.module.css'
 const FrontPage = () => {
     return (
-        <div className='relative'>
+        <div className='relative '>
             <div className={`bg-gradient-to-r from-emerald-200 from-10% to-emerald-500 to-90% h-screen relative ${styles.right_site_shape}`} >
                 <Image src={dot} alt='No Image' width={150} height={150} className='absolute bottom-16' />
             </div>
