@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <nav class="bg-white  shadow-2xl  bg-gradient-to-r from-emerald-500 from-90% to-emerald-500 to-20%">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="#" class="flex gap-2 items-center">
+        <Link href="#" class="flex gap-2 items-center">
           <Image
             src={siteIcon}
             alt="No Image"
@@ -17,7 +17,7 @@ const Header = () => {
           <span class="self-center text-lg md:text-xl lg:text-2xl font-semibold whitespace-nowrap text-slate-600">
             Azwaajum Muthohharoh
           </span>
-        </a>
+        </Link>
         <div class="flex md:order-2 gap-2">
           <button
             type="button"
@@ -118,12 +118,12 @@ const Header = () => {
               </Link>
             </li>
             <li className="hover:transition ease-in delay-150  hover:-translate-y-1   duration-300">
-              <a
+              <Link
                 href="/ui/contact"
                 class="block py-2 md:text-lg lg:text-xl pl-3 pr-4 text-white rounded font-semibold md:p-0 "
               >
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
