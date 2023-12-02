@@ -20,7 +20,7 @@ const FrontPage = () => {
                     <div>
                         <p>We try to help you get best matched partner</p>
                     </div>
-                    <div><h2 className='md:text-2xl lg:text-3xl font-semibold text-gray-700'>Complete your "Ordek Din"</h2></div>
+                    <div><h2 className='md:text-2xl lg:text-3xl font-semibold text-gray-700'>{`Complete your &ldquoOrdek Din&ldquo`}</h2></div>
                 </div>
                 <div className=" card w-96  sm:w-2/3 md:w-4/5 lg:w-2/3 mx-auto bg-base-100 shadow-2xl ">
                   
@@ -30,8 +30,8 @@ const FrontPage = () => {
                                 <div class="grid grid-cols-2 gap-3 mb-3">
                                     <div className=''>
                                         <label htmlFor="district" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">District</label>
-                                        <select className="border rounded-md border-teal-600 hover:border-pink-500 h-10 w-full max-w-xs h-8 shadow-xl">
-                                            <option disabled selected>Select district</option>
+                                        <select defaultValue="Select district" className="border rounded-md border-teal-600 hover:border-pink-500 h-10 w-full max-w-xs h-8 shadow-xl">
+                                            <option disabled>Select district</option>
                                             <option>Chittagong</option>
                                             <option>Dhaka</option>
                                             <option>Sylhet</option>
@@ -44,8 +44,8 @@ const FrontPage = () => {
                                     </div>
                                     <div>
                                         <label htmlFor="candidate" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Candidate</label>
-                                        <select className="border rounded-md border-teal-600 hover:border-pink-500 h-10 w-full max-w-xs h-8 shadow-xl">
-                                            <option disabled selected>Select Candidate</option>
+                                        <select defaultValue="Select Candidate" className="border rounded-md border-teal-600 hover:border-pink-500 h-10 w-full max-w-xs h-8 shadow-xl">
+                                            <option disabled>Select Candidate</option>
                                             <option>Male</option>
                                             <option>Female</option>
                                         </select>
@@ -54,8 +54,8 @@ const FrontPage = () => {
                                 <div class="grid grid-cols-2 gap-3 mb-5">
                                     <div className=''>
                                         <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Age range</label>
-                                        <select className="border rounded-md border-teal-600 hover:border-pink-500 h-10 w-full max-w-xs h-8 shadow-xl">
-                                            <option disabled selected>Select All</option>
+                                        <select defaultValue="Select All" className="border rounded-md border-teal-600 hover:border-pink-500 h-10 w-full max-w-xs h-8 shadow-xl">
+                                            <option disabled>Select All</option>
                                             <option>15-20</option>
                                             <option>20-25</option>
                                             <option>20-30</option>
@@ -65,8 +65,8 @@ const FrontPage = () => {
                                     </div>
                                     <div>
                                         <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Marital status</label>
-                                        <select className="border rounded-md border-teal-600 hover:border-pink-500 h-10 w-full max-w-xs h-8 shadow-xl">
-                                            <option disabled selected>Select All</option>
+                                        <select defaultValue="Select All" className="border rounded-md border-teal-600 hover:border-pink-500 h-10 w-full max-w-xs h-8 shadow-xl">
+                                            <option disabled >Select All</option>
                                             <option>Never married</option>
                                             <option>Married</option>
                                             <option>devorced</option>
@@ -78,8 +78,8 @@ const FrontPage = () => {
                                 <div class="grid grid-cols-2 gap-3 mb-5">
                                     <div className=''>
                                         <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Marital status</label>
-                                        <select className="border rounded-md border-teal-600 hover:border-pink-500 h-10 w-full max-w-xs h-8 shadow-xl">
-                                            <option disabled selected>Select All</option>
+                                        <select defaultValue="Select All" className="border rounded-md border-teal-600 hover:border-pink-500 h-10 w-full max-w-xs h-8 shadow-xl">
+                                            <option disabled >Select All</option>
                                             <option>Never married</option>
                                             <option>Married</option>
                                             <option>devorced</option>
@@ -89,8 +89,8 @@ const FrontPage = () => {
                                     </div>
                                     <div className=''>
                                         <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Special</label>
-                                        <select className="border rounded-md border-teal-600 hover:border-pink-500 h-10 w-full max-w-xs h-8 shadow-xl">
-                                            <option disabled selected>Select All</option>
+                                        <select defaultValue="Select All" className="border rounded-md border-teal-600 hover:border-pink-500 h-10 w-full max-w-xs h-8 shadow-xl">
+                                            <option disabled >Select All</option>
                                             <option>Masna</option>
                                             <option>Sulasa</option>
                                             <option>rubaya</option>
