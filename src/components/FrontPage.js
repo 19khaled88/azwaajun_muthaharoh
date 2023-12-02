@@ -20,7 +20,7 @@ const FrontPage = () => {
                     <div>
                         <p>We try to help you get best matched partner</p>
                     </div>
-                    <div><h2 className='md:text-2xl lg:text-3xl font-semibold text-gray-700'>{`Complete your &ldquoOrdek Din&ldquo`}</h2></div>
+                    <div><h2 className='md:text-2xl lg:text-3xl font-semibold text-gray-700'>{`Complete your "Ordek Din"`}</h2></div>
                 </div>
                 <div className=" card w-96  sm:w-2/3 md:w-4/5 lg:w-2/3 mx-auto bg-base-100 shadow-2xl ">
                   
