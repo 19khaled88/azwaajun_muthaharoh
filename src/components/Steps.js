@@ -12,7 +12,7 @@ const StepsPage = () => {
           <figure style={{ height: '150px' }}><Image src={biodata} alt="car!" width={150} height={100} /></figure>
           <div className="p-5 flex  flex-col gap-3 justify-center items-center h-36">
             <h2 className="card-title text-2xl">Create Your Bio</h2>
-            <p className='text-lg text-center text-gray-800 '>First create your biodata with all necessary information</p>
+            <p className='text-lg text-center text-gray-800 pb-5'>First create your biodata with all necessary information</p>
 
           </div>
         </div>
@@ -20,7 +20,7 @@ const StepsPage = () => {
           <figure style={{ height: '150px' }}><Image src={search} alt="car!" width={150} height={100} /></figure>
           <div className="p-5 flex  flex-col gap-3 justify-center items-center h-36">
             <h2 className="card-title text-2xl">Search Bio</h2>
-            <p className='text-lg text-center text-gray-500 '>Then you can do searh on all biodata in our collection</p>
+            <p className='text-lg text-center text-gray-500 pb-5'>Then you can do searh on all biodata in our collection</p>
 
           </div>
         </div>
@@ -28,7 +28,7 @@ const StepsPage = () => {
           <figure style={{ height: '150px' }}><Image src={telephone} alt="car!" width={150} height={100} /></figure>
           <div className="p-5 flex  flex-col gap-3 justify-center items-center h-36">
             <h2 className="card-title text-2xl">Seak for any help</h2>
-            <p className='text-lg text-center text-gray-500 '>Feel free to make telephone and get help if you need</p>
+            <p className='text-lg text-center text-gray-500 pb-5'>Feel free to make telephone and get help if you need</p>
 
           </div>
         </div>
@@ -36,7 +36,7 @@ const StepsPage = () => {
           <figure style={{ height: '150px' }}><Image src={success} alt="car!" width={150} height={100} /></figure>
           <div className="p-5 flex  flex-col gap-3 justify-center items-center h-36">
             <h2 className="card-title text-2xl">Got married</h2>
-            <p className='text-lg text-center text-gray-500 '>Finally, you got married happily, and be in peace</p>
+            <p className='text-lg text-center text-gray-500 pb-5'>Finally, you got married happily, and be in peace</p>
 
           </div>
         </div>
