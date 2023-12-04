@@ -40,42 +40,52 @@ const BiodataPage = () => {
     const sideBarItem = [
 
         {
+            id:1,
             icon: <Icon className='' icon={u0031} />,
             title: 'General Info'
         },
         {
+            id:2,
             icon: <Icon className='' icon={u0032} />,
             title: 'Address'
         },
         {
+            id:3,
             icon: <Icon className='' icon={u0033} />,
             title: 'Education Info'
         },
         {
+            id:4,
             icon: <Icon className='' icon={u0034} />,
             title: 'Family Info'
         },
         {
+            id:5,
             icon: <Icon className='' icon={u0035} />,
             title: 'Personal Info'
         },
         {
+            id:6,
             icon: <Icon className='' icon={u0036} />,
             title: 'Professional Info'
         },
         {
+            id:7,
             icon: <Icon className='' icon={u0037} />,
             title: 'Marital Status'
         },
         {
+            id:8,
             icon: <Icon className='' icon={u0038} />,
             title: 'Partner Qality'
         },
         {
+            id:9,
             icon: <Icon className='' icon={u0039} />,
             title: 'Aggrement'
         },
         {
+            id:10,
             icon: <Icon className='' icon={u0030} />,
             title: 'Contact Info'
 
@@ -99,7 +109,7 @@ const BiodataPage = () => {
         let array = []
         data.map((items, index) => {
             array.push(
-                <div key={index} className='grid grid-cols-4'>
+                <div key={items.id} className='grid grid-cols-4'>
                     <span className={`${index === activeTab ? 'rounded-full bg-emerald-600 text-white p-1 w-fit' : 'p-1 rounded-full bg-white w-fit'} flex flex-row`}>{items.icon}</span>
                     <p className='col-span-3'>{items.title}</p>
                 </div>
