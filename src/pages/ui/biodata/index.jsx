@@ -93,16 +93,16 @@ const BiodataPage = () => {
     ]
 
     const formElements = [
-        <GeneralInfoPage data={data} handleChange={handleChange} />,
-        <Address data={data} handleChange={handleChange} />,
-        <EducationPage data={data} handleChange={handleChange} />,
-        <FamilyPage data={data} handleChange={handleChange} />,
-        <PersonalPage data={data} handleChange={handleChange} />,
-        <ProfessionalPage data={data} handleChange={handleChange} />,
-        <MaritalPage data={data} handleChange={handleChange} />,
-        <PartnerPage data={data} handleChange={handleChange} />,
-        <AggrementPage data={data} handleChange={handleChange} />,
-        <ContactPage data={data} handleChange={handleChange} />
+        <GeneralInfoPage key={1} data={data} handleChange={handleChange} />,
+        <Address key={2} data={data} handleChange={handleChange} />,
+        <EducationPage key={3} data={data} handleChange={handleChange} />,
+        <FamilyPage key={4} data={data} handleChange={handleChange} />,
+        <PersonalPage key={5} data={data} handleChange={handleChange} />,
+        <ProfessionalPage key={6} data={data} handleChange={handleChange} />,
+        <MaritalPage key={7} data={data} handleChange={handleChange} />,
+        <PartnerPage key={8} data={data} handleChange={handleChange} />,
+        <AggrementPage key={9} data={data} handleChange={handleChange} />,
+        <ContactPage key={10} data={data} handleChange={handleChange} />
     ]
 
     const showSideBarItem = (data) => {
