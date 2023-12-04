@@ -96,22 +96,21 @@ const BiodataPage = () => {
         <ContactPage data={data} handleChange={handleChange} />
     ]
 
-    const showSideBarItem = (data) => {
-        let array = []
-        data.map((items, index) => {
-            array.push(
-                <div key={index} className='grid grid-cols-4'>
-                    <span className={`${index === activeTab ? 'rounded-full bg-emerald-600 text-white p-1 w-fit' : 'p-1 rounded-full bg-white w-fit'} flex flex-row`}>{items.icon}</span>
-                    <p className='col-span-3'>{items.title}</p>
-                </div>
-            )
-        })
-        return array
-    }
+    // const showSideBarItem = (data) => {
+    //     let array = []
+    //     data.map((items, index) => {
+    //         array.push(
+    //             <div key={index} className='grid grid-cols-4'>
+    //                 <span className={`${index === activeTab ? 'rounded-full bg-emerald-600 text-white p-1 w-fit' : 'p-1 rounded-full bg-white w-fit'} flex flex-row`}>{items.icon}</span>
+    //                 <p className='col-span-3'>{items.title}</p>
+    //             </div>
+    //         )
+    //     })
+    //     return array
+    // }
 
-    const showContent = (data)=>{
-        let array =[]
-        const response = data.find((item,index)=>index === activeTab)
+    const showContent = (data) => {
+        const response = data.find((item, index) => index === activeTab)
         return response
     }
 
@@ -119,9 +118,9 @@ const BiodataPage = () => {
         <div className=' flex flex-col justify-center bg-gray-300 pt-10 pb-10'>
             <div className='flex flex-row  mx-auto w-5/6 pb-10'>
                 <div className='bg-blue-400 rounded-tl-md w-80 p-2 rounded-bl-md flex flex-col gap-2 '>
-                    {
+                    {/* {
                         showSideBarItem(sideBarItem)
-                    }
+                    } */}
                 </div>
                 <div className='w-full'>
                     {
