@@ -143,15 +143,15 @@ const BiodataPage = () => {
                 <button
                     disabled={activeTab === 0 ? "disabled" : ""}
                     onClick={() => setActiveTab(prev => prev - 1)}
-                    className={`px-16 py-2 rounded-xl bg-blue-600 text-white ${activeTab === 0 ? "opacity-50 bg-slate-600" : "opacity-100"}`}>
+                    className={`px-5 sm:px-16 py-2 rounded-xl bg-blue-600 text-white ${activeTab === 0 ? "opacity-50 bg-slate-600" : "opacity-100"}`}>
                     Back
                 </button>
                 <button
                     disabled={activeTab === formElements.length - 1 ? "disabled" : ""}
                     onClick={() => setActiveTab(prev => prev + 1)}
-                    className={`px-16 py-2 rounded-xl bg-blue-600 text-white ${activeTab === formElements.length - 1 ? "opacity-50 bg-slate-600" : "opacity-100"}`}>Next</button>
+                    className={`px-5 sm:px-16 py-2 rounded-xl bg-blue-600 text-white ${activeTab === formElements.length - 1 ? "opacity-50 bg-slate-600" : "opacity-100"}`}>Next</button>
                 {
-                    activeTab === formElements.length - 1 ? <button className='px-16 py-2 rounded-xl bg-blue-600 text-white' onClick={() => console.log(data)}>Submit</button> : null
+                    activeTab === formElements.length - 1 ? <button className='px-5 sm:px-16 py-2 rounded-xl bg-blue-600 text-white' onClick={() => console.log(data)}>Submit</button> : null
                 }
             </div>
         </div>
