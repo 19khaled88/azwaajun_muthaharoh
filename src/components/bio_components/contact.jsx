@@ -5,8 +5,8 @@ const ContactPage = (props) => {
     const {data,handleChange} = props
 
     return (
-        <div className="max-w-xs md:max-w-lg mx-auto">
-            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div className="w-full h-full mx-auto">
+            <form className="bg-white h-full shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <div className="mb-10">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
                         Username
