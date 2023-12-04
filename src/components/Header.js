@@ -8,9 +8,7 @@ import { Helmet } from "react-helmet";
 const Header = () => {
   return (
     <nav class="bg-white  shadow-2xl  bg-gradient-to-r from-emerald-500 from-90% to-emerald-500 to-20%">
-      <Helmet>
-        <script src="../../js/header.js" />
-      </Helmet>
+      
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href="#" class="flex gap-2 items-center">
           <Image
