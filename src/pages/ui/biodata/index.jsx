@@ -108,10 +108,10 @@ const BiodataPage = () => {
         return array
     }
 
-    // const showContent = (data) => {
-    //     const response = data.find((item, index) => index === activeTab)
-    //     return response
-    // }
+    const showContent = (data) => {
+        const response = data.find((item, index) => index === activeTab)
+        return response
+    }
 
     return (
         <div className=' flex flex-col justify-center bg-gray-300 pt-10 pb-10'>
@@ -125,7 +125,7 @@ const BiodataPage = () => {
                     {
                         // // formElements[activeTab]
                         // formElements.map((item,index)=>index === activeTab ? item : '')
-                        // showContent(formElements)
+                        showContent(formElements)
                     }
                 </div>
             </div>
