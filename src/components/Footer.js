@@ -64,7 +64,7 @@ const Footer = () => {
             <h1 className='text-lg font-bold text-gray-600 mb-2 lg:mb-5'>Usefull Links</h1>
             <div className='flex lg:flex-col gap-2 text-md font-semibold text-gray-600'>
               <Link href="/" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'> Home</Link>
-              <Link href="/ui/about" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'>About Us</Link>
+              <Link href="/ui/biodata" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'>Bio-Data</Link>
               <Link href="/ui/faq" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'>FAQ</Link>
               <Link href="/ui/contact" className='border border-1 rounded-md border-orange-500 w-fit px-3 hover:bg-pink-500 hover:text-white'>Contact us</Link>
 

@@ -1,3 +1,4 @@
+import WhyWe from '@/components/WhyWe'
 import FrontPage from '@/components/FrontPage'
 
 import RootLayout from '@/components/Layout'
@@ -8,15 +9,16 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const Home=()=> {
+const Home = () => {
   return (
-      <div className=''>
-        <FrontPage />
-        <SuccessStory />
-        <StepsPage />
-      </div>
+    <div className=''>
+      <FrontPage />
+      <SuccessStory />
+      <WhyWe />
+      <StepsPage />
+    </div>
 
-  
+
   )
 }
 
