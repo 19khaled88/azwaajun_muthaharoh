@@ -39,7 +39,7 @@ const GeneralInfoPage = (props) => {
         geenral: generalInfo
       })
     }
-  }, [generalInfo])
+  }, [generalInfo,data,setData])
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
       <div className="flex flex-col -mx-3 mb-6">
