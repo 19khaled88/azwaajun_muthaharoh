@@ -109,6 +109,12 @@ const BiodataPage = () => {
         return array
     }
 
+    const showContent = (data)=>{
+        let array =[]
+        const response = data.find((item,index)=>index === activeTab)
+        return response
+    }
+
     return (
         <div className=' flex flex-col justify-center bg-gray-300 pt-10 pb-10'>
             <div className='flex flex-row  mx-auto w-5/6 pb-10'>
@@ -119,7 +125,9 @@ const BiodataPage = () => {
                 </div>
                 <div className='w-full'>
                     {
-                        formElements[activeTab]
+                        // // formElements[activeTab]
+                        // formElements.map((item,index)=>index === activeTab ? item : '')
+                        showContent(formElements)
                     }
                 </div>
             </div>
