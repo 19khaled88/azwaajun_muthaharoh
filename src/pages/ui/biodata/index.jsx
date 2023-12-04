@@ -77,7 +77,7 @@ const BiodataPage = () => {
             title: 'Aggrement'
         },
         {
-            icon: [<Icon className='' icon={u0031} />, <Icon className='' icon={u0030} />],
+            icon: <Icon className='' icon={u0030} />,
             title: 'Contact Info'
 
         }
