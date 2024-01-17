@@ -6,17 +6,17 @@ const GeneralInfoPage = (props) => {
 
   const [generalInfo, setGeneralInfo] = useState({
     bio_type:"",
-    Marital_Status:"",
-    Birth_Date:"",
-    Height:"",
-    Complexion:"",
-    Weight:"",
-    Blood_Group:"",
-    Nationality:""
+    marital_status:"",
+    birth_date:"",
+    height:"",
+    complexion:"",
+    weight:"",
+    blood_group:"",
+    nationality:""
 
   })
 
-  const handleAddressChange = (event) => {
+  const handleGeneralInfoChange = (event) => {
     const { name, value } = event.target
     setGeneralInfo({
       ...generalInfo,
@@ -36,10 +36,12 @@ const GeneralInfoPage = (props) => {
     if (!isDataEmpty()) {
       setData({
         ...data,
-        geenral: generalInfo
+        generalInfo: generalInfo
       })
     }
-  }, [generalInfo,data,setData])
+  }, [generalInfo ,setData])
+
+ 
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
       <div className="flex flex-col -mx-3 mb-6">
@@ -49,7 +51,7 @@ const GeneralInfoPage = (props) => {
           </label>
           <input 
           className="w-full bg-gray-200 text-gray-700 border rounded p-2 px-4  leading-tight focus:outline-none focus:bg-white" 
-          name="bio_type" type="text" placeholder="Bio data type" value={generalInfo.bio_type} onChange={handleAddressChange} />
+          name="bio_type" type="text" placeholder="Bio data type" value={generalInfo.bio_type} onChange={handleGeneralInfoChange} />
         </div>
         <div className=" px-3  flex flex-col md:flex-row mb-3">
           <label className="block w-44  uppercase tracking-wide text-gray-700 text-xs font-bold " htmlFor="locality">
@@ -57,7 +59,7 @@ const GeneralInfoPage = (props) => {
           </label>
           <input 
           className=" block w-full bg-gray-200 text-gray-700 border rounded p-2 px-4 leading-tight focus:outline-none focus:bg-white" 
-          name="marital_status" type="text" placeholder="Your marital status" value={generalInfo.Marital_Status} onChange={handleAddressChange} />
+          name="marital_status" type="text" placeholder="Your marital status" value={generalInfo.marital_status} onChange={handleGeneralInfoChange} />
         </div>
         <div className=" px-3   flex flex-col md:flex-row mb-3">
           <label className=" w-44  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="city">
@@ -65,7 +67,7 @@ const GeneralInfoPage = (props) => {
           </label>
           <input 
           className=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded p-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-          name="birth_date" type="text" placeholder="Your actual birth date" value={generalInfo.Birth_Date} onChange={handleAddressChange} />
+          name="birth_date" type="text" placeholder="Your actual birth date" value={generalInfo.birth_date} onChange={handleGeneralInfoChange} />
         </div>
         <div className=" px-3  flex flex-col md:flex-row mb-3">
           <label className="block w-44  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="state">
@@ -73,7 +75,7 @@ const GeneralInfoPage = (props) => {
           </label>
           <input 
           className=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded p-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-          name="height" type="text" placeholder="Your height" value={generalInfo.Height} onChange={handleAddressChange} />
+          name="height" type="text" placeholder="Your height" value={generalInfo.height} onChange={handleGeneralInfoChange} />
         </div>
         <div className="  px-3  flex flex-col md:flex-row mb-3">
           <label className="block w-44  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="zip">
@@ -81,7 +83,7 @@ const GeneralInfoPage = (props) => {
           </label>
           <input 
           className=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded p-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-          name="complexion" type="text" placeholder="Your complexion" value={generalInfo.Complexion} onChange={handleAddressChange} />
+          name="complexion" type="text" placeholder="Your complexion" value={generalInfo.complexion} onChange={handleGeneralInfoChange} />
         </div>
         <div className=" px-3  flex flex-col md:flex-row mb-3">
           <label className="block w-44  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="zip">
@@ -89,7 +91,7 @@ const GeneralInfoPage = (props) => {
           </label>
           <input 
           className=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded p-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-          name="weight" type="text" placeholder="Your weight" value={generalInfo.Weight} onChange={handleAddressChange} />
+          name="weight" type="text" placeholder="Your weight" value={generalInfo.weight} onChange={handleGeneralInfoChange} />
         </div>
         <div className="  px-3  flex flex-col md:flex-row mb-3">
           <label className="block w-44  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="zip">
@@ -97,7 +99,7 @@ const GeneralInfoPage = (props) => {
           </label>
           <input 
           className=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded p-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-          name="blood group" type="text" placeholder="Your blood group" value={generalInfo.Blood_Group} onChange={handleAddressChange} />
+          name="blood_group" type="text" placeholder="Your blood group" value={generalInfo.blood_group} onChange={handleGeneralInfoChange} />
         </div>
         <div className="  px-3  flex flex-col md:flex-row mb-3">
           <label className="block w-44  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="zip">
@@ -105,7 +107,7 @@ const GeneralInfoPage = (props) => {
           </label>
           <input 
           className=" block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded p-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-          name="nationality" type="text" placeholder="Your nationality" value={generalInfo.Nationality} onChange={handleAddressChange} />
+          name="nationality" type="text" placeholder="Your nationality" value={generalInfo.nationality} onChange={handleGeneralInfoChange} />
         </div>
       </div>
     </form>

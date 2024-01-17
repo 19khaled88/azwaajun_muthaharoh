@@ -54,7 +54,7 @@ const Footer = () => {
           alt="No Image"
           src={footer} //image saved in public/home
         /> */}
-      <div className='px-16 py-5 w-full  grid md:grid-cols-2 lg:grid-cols-3 md:gap-5'>
+      <div className='px-16 md:px-5 lg:px-16 py-5 w-full  grid md:grid-cols-2 lg:grid-cols-3 md:gap-5'>
         <div className='col-span-1 my-3 md:my-10'>
           <p className='text-2xl font-bold drop-shadow-2xl text-stone-700'>Azwaajum Muthohharoh</p>
         </div>

@@ -1,7 +1,5 @@
 import RootLayout from '@/components/Layout'
-import Address from '@/components/bio_components/address'
 import AggrementPage from '@/components/bio_components/aggrement'
-import EducationPage from '@/components/bio_components/education'
 import FamilyPage from '@/components/bio_components/family'
 import GeneralInfoPage from '@/components/bio_components/general'
 import MaritalPage from '@/components/bio_components/marital'
@@ -22,11 +20,12 @@ import { u0039 } from 'react-icons-kit/noto_emoji_regular/u0039'
 import { play3 } from 'react-icons-kit/icomoon/play3'
 import React, { useState } from 'react'
 import ContactPage from '@/components/bio_components/contact'
+import EducationPage from '@/components/bio_components/educational'
+import Address from '@/components/bio_components/addresses'
 
 const BiodataPage = () => {
-    const [data, setData] = useState({
+    const [data, setData] = useState({})
 
-    })
     const handleChange = (event) => {
         const { name, value } = event.target;
         setData({
@@ -52,7 +51,7 @@ const BiodataPage = () => {
         {
             id:3,
             icon: <Icon className='' icon={u0033} />,
-            title: 'Education Info'
+            title: 'Educational Info'
         },
         {
             id:4,
@@ -93,16 +92,16 @@ const BiodataPage = () => {
     ]
 
     const formElements = [
-        <GeneralInfoPage key={1} data={data} handleChange={handleChange} />,
-        <Address key={2} data={data} handleChange={handleChange} />,
-        <EducationPage key={3} data={data} handleChange={handleChange} />,
-        <FamilyPage key={4} data={data} handleChange={handleChange} />,
-        <PersonalPage key={5} data={data} handleChange={handleChange} />,
-        <ProfessionalPage key={6} data={data} handleChange={handleChange} />,
-        <MaritalPage key={7} data={data} handleChange={handleChange} />,
-        <PartnerPage key={8} data={data} handleChange={handleChange} />,
-        <AggrementPage key={9} data={data} handleChange={handleChange} />,
-        <ContactPage key={10} data={data} handleChange={handleChange} />
+        <GeneralInfoPage key={1} data={data} setData={setData} handleChange={handleChange} />,
+        <Address key={2} data={data} setData={setData} handleChange={handleChange} />,
+        <EducationPage key={3} data={data} setData={setData} handleChange={handleChange} />,
+        <FamilyPage key={4} data={data} setData={setData} handleChange={handleChange} />,
+        <PersonalPage key={5} data={data} setData={setData} handleChange={handleChange} />,
+        <ProfessionalPage key={6} data={data} setData={setData} handleChange={handleChange} />,
+        <MaritalPage key={7} data={data} setData={setData} handleChange={handleChange} />,
+        <PartnerPage key={8} data={data} setData={setData} handleChange={handleChange} />,
+        <AggrementPage key={9} data={data} setData={setData} handleChange={handleChange} />,
+        <ContactPage key={10} data={data} setData={setData} handleChange={handleChange} />
     ]
 
     const showSideBarItem = (data) => {
@@ -110,7 +109,7 @@ const BiodataPage = () => {
         data.map((items, index) => {
             array.push(
                 <div key={items.id} className='grid grid-cols-4'>
-                    <span className={`${index === activeTab ? 'rounded-full bg-emerald-600 text-white p-1 w-fit' : 'p-1 rounded-full bg-white w-fit'} flex flex-row`}>{items.icon}</span>
+                    <span className={`${index === activeTab ? 'rounded-full w-9 h-9 bg-emerald-600 text-white p-1 flex flex-row justify-center items-center' : 'p-1 w-9 h-9 rounded-full bg-white'} flex flex-row justify-center items-center`}>{index + 1}</span>
                     <p className='col-span-3'>{items.title}</p>
                 </div>
             )
@@ -123,6 +122,7 @@ const BiodataPage = () => {
         return response
     }
 
+    console.log(data)
     return (
         <div className=' flex flex-col justify-center bg-gray-300 pt-10 pb-10'>
             <div className='flex flex-row  mx-auto w-5/6 pb-10'>
