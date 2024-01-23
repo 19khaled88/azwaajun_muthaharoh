@@ -25,7 +25,7 @@ const PersonalPage = (props) => {
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
       <div className="flex flex-col -mx-3 mb-6">
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="dress_outside"
@@ -41,7 +41,7 @@ const PersonalPage = (props) => {
             onChange={handlePersonalInfoChange}
           />
         </div>
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="beard"
@@ -57,7 +57,7 @@ const PersonalPage = (props) => {
             onChange={handlePersonalInfoChange}
           />
         </div>
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="avobe_ankles"
@@ -73,7 +73,7 @@ const PersonalPage = (props) => {
             onChange={handlePersonalInfoChange}
           />
         </div>
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="pray_five_time"
@@ -90,7 +90,7 @@ const PersonalPage = (props) => {
           />
         </div>
 
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="mahram_non-mahram"
@@ -106,7 +106,7 @@ const PersonalPage = (props) => {
             onChange={handlePersonalInfoChange}
           />
         </div>
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="recite_quran"
@@ -124,7 +124,7 @@ const PersonalPage = (props) => {
         </div>
 
 
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="fique"
@@ -149,7 +149,7 @@ const PersonalPage = (props) => {
 
 
 
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="song_drama_movie"
@@ -165,7 +165,7 @@ const PersonalPage = (props) => {
             onChange={handlePersonalInfoChange}
           />
         </div>
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="diseases"
@@ -182,7 +182,7 @@ const PersonalPage = (props) => {
           />
         </div>
 
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="deen_work"
@@ -200,7 +200,7 @@ const PersonalPage = (props) => {
         </div>
 
 
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="islamic_books"
@@ -216,7 +216,7 @@ const PersonalPage = (props) => {
             onChange={handlePersonalInfoChange}
           />
         </div>
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="islamic_schoolars"
@@ -233,7 +233,7 @@ const PersonalPage = (props) => {
           />
         </div>
 
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="hobbies"
@@ -251,7 +251,7 @@ const PersonalPage = (props) => {
         </div>
 
         <div className="border border-gray-300 py-2 my-2">
-          <div className="px-3 flex flex-col md:flex-row mb-3">
+          <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="contact_number"

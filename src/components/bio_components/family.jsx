@@ -70,7 +70,7 @@ const FamilyPage = (props) => {
 
         <div className="border border-gray-300 py-2 my-2">
           <h1 className="pl-3 text-lg font-bold">Father</h1>
-          <div className="px-3 flex flex-col md:flex-row mb-3">
+          <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="father_name"
@@ -86,7 +86,7 @@ const FamilyPage = (props) => {
               onChange={handleFamilyInfoChange}
             />
           </div>
-          <div className="px-3 flex flex-col md:flex-row mb-3">
+          <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="if_father_died"
@@ -104,7 +104,7 @@ const FamilyPage = (props) => {
               <option value="died">died</option>
             </select>
           </div>
-          <div className="px-3 flex flex-col md:flex-row mb-3">
+          <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
               Father's profession details
             </label>
@@ -123,7 +123,7 @@ const FamilyPage = (props) => {
 
         <div className="border border-gray-300 py-2 my-2">
           <h1 className="pl-3 text-lg font-bold">Mother</h1>
-          <div className="px-3 flex flex-col md:flex-row mb-3">
+          <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="mother_name"
@@ -139,7 +139,7 @@ const FamilyPage = (props) => {
               onChange={handleFamilyInfoChange}
             />
           </div>
-          <div className="px-3 flex flex-col md:flex-row mb-3">
+          <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="if_mother_died"
@@ -157,7 +157,7 @@ const FamilyPage = (props) => {
               <option value="died">died</option>
             </select>
           </div>
-          <div className="px-3 flex flex-col md:flex-row mb-3">
+          <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
               Mother's profession details
             </label>
@@ -175,7 +175,7 @@ const FamilyPage = (props) => {
         {/* Sibling segment starts*/}
         <div className="border border-gray-300 py-2 my-2">
           <h1 className="pl-3 text-lg font-bold">Siblings Details</h1>
-          <div className="px-3 flex flex-col md:flex-row mb-3">
+          <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="brothers"
@@ -199,7 +199,7 @@ const FamilyPage = (props) => {
             </select>
           </div>
           {brothers === true ? (
-            <div className="px-3 flex flex-col md:flex-row mb-3">
+            <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
               <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
                 Brothers' details
               </label>
@@ -214,7 +214,7 @@ const FamilyPage = (props) => {
             ""
           )}
 
-          <div className="px-3 flex flex-col md:flex-row mb-3">
+          <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="sisters"
@@ -238,7 +238,7 @@ const FamilyPage = (props) => {
             </select>
           </div>
           {sisters === true ? (
-            <div className="px-3 flex flex-col md:flex-row mb-3">
+            <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
               <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
                 Sisters' details
               </label>
@@ -258,7 +258,7 @@ const FamilyPage = (props) => {
 
         {/* paternal & maternal uncles starts*/}
         <div className="border border-gray-300 py-2 my-2">
-          <div className="px-3 flex flex-col md:flex-row mb-3">
+          <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
               Paternal & maternal uncles details
             </label>
@@ -275,7 +275,7 @@ const FamilyPage = (props) => {
         {/* Economy status starts*/}
         <div className="border border-gray-300 py-2 my-2">
           <h1 className="pl-3 text-lg font-bold">Financial condition</h1>
-          <div className="px-3 flex flex-col md:flex-row mb-3">
+          <div className="px-3 flex flex-col gap-3  md:flex-row mb-3">
             <label
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="economy_status"
@@ -295,7 +295,7 @@ const FamilyPage = (props) => {
               <option value="lower_middle_class">lower middle class</option>
             </select>
           </div>
-          <div className="px-3 flex flex-col md:flex-row mb-3">
+          <div className="px-3 flex flex-col gap-3  md:flex-row mb-3">
             <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
               short brief
             </label>
@@ -311,7 +311,7 @@ const FamilyPage = (props) => {
 
         {/* Deen practice in family starts*/}
         <div className="border border-gray-300 py-2 my-2">
-          <div className="px-3 flex flex-col md:flex-row mb-3">
+          <div className="px-3 flex flex-col  gap-3 md:flex-row mb-3">
             <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
               How about deen practice in house
             </label>

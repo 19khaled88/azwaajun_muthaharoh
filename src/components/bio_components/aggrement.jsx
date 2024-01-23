@@ -22,7 +22,7 @@ const AggrementPage = (props) => {
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
       <div className="flex flex-col -mx-3 mb-6">
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="parents_aware"
@@ -40,7 +40,7 @@ const AggrementPage = (props) => {
             <option value="No">No</option>
           </select>
         </div>
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="information_truth"
@@ -58,7 +58,7 @@ const AggrementPage = (props) => {
             <option value="No">No</option>
           </select>
         </div>
-        <div className="px-3 flex flex-col md:flex-row mb-3">
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="cadidate_responsibility"

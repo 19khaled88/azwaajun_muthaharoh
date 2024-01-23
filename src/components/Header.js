@@ -2,6 +2,7 @@
 import Image from "next/image";
 import offer from "../../public/offers.png";
 import siteIcon from "../../public/siteIcon.jpg";
+import toast, { Toaster } from 'react-hot-toast';
 import Link from "next/link";
 import styles from '../styles/header.module.css'
 import { Helmet } from "react-helmet";
@@ -50,9 +51,9 @@ const Header = () => {
             </span>
             My Account
             <ul className={`${styles.drop_menu}`}>
-              <li><a className="text-left pl-2" href="#">Profile</a></li>
-              <li><a className="text-left pl-2" href="#">Register</a></li>
-              <li><a className="text-left pl-2" href="#">Login</a></li>
+              <li><a className="text-left pl-2" href="/profile/user">Profile</a></li>
+              <li><a className="text-left pl-2" href="/ui/auth/register">Register</a></li>
+              <li><a className="text-left pl-2" href="/ui/auth/login">Login</a></li>
               
             </ul>
           </div>
@@ -151,6 +152,7 @@ const Header = () => {
 
           </ul>
         </div>
+        <Toaster />
       </div>
     </nav>
   );
