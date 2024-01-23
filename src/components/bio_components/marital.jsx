@@ -13,11 +13,16 @@ const MaritalPage = (props) => {
   };
 
   useEffect(() => {
-    setData({
-      ...data,
-      maritalInfo,
-    });
-  }, [maritalInfo, setData,data]);
+    // setData({
+    //   ...data,
+    //   maritalInfo,
+    // });
+
+    setData((prevData) => ({
+      ...prevData,
+      maritalInfo
+    }));
+  }, [maritalInfo, setData]);
 
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">

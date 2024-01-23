@@ -52,15 +52,23 @@ const FamilyPage = (props) => {
   };
 
   useEffect(() => {
-    setData({
-      ...data,
+    // setData({
+    //   ...data,
+    //   familyInfo:{
+    //     ...familyInfo,
+    //     brothers_details: brothers ? familyInfo.brothers_details : '',
+    //   },
+    // });
+
+    setData((prevData) => ({
+      ...prevData,
       familyInfo:{
         ...familyInfo,
         brothers_details: brothers ? familyInfo.brothers_details : '',
       },
-    });
+    }));
 
-  }, [familyInfo, setData,brothers,data]);
+  }, [familyInfo, setData,brothers]);
 
 
   return (

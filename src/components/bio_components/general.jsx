@@ -18,10 +18,14 @@ const GeneralInfoPage = (props) => {
 
   const handleGeneralInfoChange = (event) => {
     const { name, value } = event.target
-    setGeneralInfo({
-      ...generalInfo,
+    // setGeneralInfo({
+    //   ...generalInfo,
+    //   [name]: value
+    // })
+    setGeneralInfo((prevGeneralInfo) => ({
+      ...prevGeneralInfo,
       [name]: value
-    })
+    }));
   }
 
   useEffect(() => {
@@ -34,12 +38,17 @@ const GeneralInfoPage = (props) => {
       return false; // All properties have values
     };
     if (!isDataEmpty()) {
-      setData({
-        ...data,
+      // setData({
+      //   ...data,
+      //   generalInfo: generalInfo
+      // })
+      setData((prevData) => ({
+        ...prevData,
         generalInfo: generalInfo
-      })
+      }));
+
     }
-  }, [generalInfo ,setData,data])
+  }, [generalInfo ,setData])
 
  
   return (

@@ -13,11 +13,16 @@ const PartnerPage = (props) => {
   };
 
   useEffect(() => {
-    setData({
-      ...data,
-      partnerInfo,
-    });
-  }, [partnerInfo, setData,data]);
+    // setData({
+    //   ...data,
+    //   partnerInfo,
+    // });
+
+    setData((prevData) => ({
+      ...prevData,
+      partnerInfo
+    }));
+  }, [partnerInfo, setData]);
 
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">

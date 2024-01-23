@@ -46,16 +46,24 @@ const EducationPage = (prop) => {
 
     useEffect(() => {
         
-          setData({
-            ...data,
+        //   setData({
+        //     ...data,
+        //     educationalInfo:{
+        //         ...educationalInfo,
+        //         entitlement:{...selectedOption}
+        //     },
+        //   });
+
+          setData((prevData) => ({
+            ...prevData,
             educationalInfo:{
                 ...educationalInfo,
                 entitlement:{...selectedOption}
             },
-          });
+          }));
         
 
-    }, [educationalInfo, setData,selectedOption,data]);
+    }, [educationalInfo, setData,selectedOption]);
 
    
 

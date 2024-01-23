@@ -10,14 +10,21 @@ const AggrementPage = (props) => {
       ...agreeementInfo,
       [name]: value,
     });
+
+    
   };
 
   useEffect(() => {
-    setData({
-      ...data,
+    // setData({
+    //   ...data,
+    //   agreeementInfo,
+    // });
+
+    setData((prevData) => ({
+      ...prevData,
       agreeementInfo,
-    });
-  }, [agreeementInfo, setData,data]);
+    }));
+  }, [agreeementInfo, setData]);
 
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">

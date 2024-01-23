@@ -27,20 +27,34 @@ const handleAddressChange = (event) => {
     };
 
     if ( !isDataEmpty() && checked === true) {
-        setData({
-            ...data,
+        // setData({
+        //     ...data,
+        //     fullAddress: {
+        //       ...fullAddress,
+        //       both_address_same: true,
+        //     },
+        //   });
+          setData((prevData) => ({
+            ...prevData,
             fullAddress: {
               ...fullAddress,
               both_address_same: true,
             },
-          });
+          }));
+
     } else if(!isDataEmpty() && checked === false){
-        setData({
-            ...data,
-            fullAddress:fullAddress
-        })
+        // setData({
+        //     ...data,
+        //     fullAddress:fullAddress
+        // })
+
+        setData((prevData) => ({
+          ...prevData,
+          fullAddress:fullAddress
+        }));
+
     }
-  }, [fullAddress, setData,data]);
+  }, [fullAddress, setData]);
 
 
   const clickhandler = ({target}) => {

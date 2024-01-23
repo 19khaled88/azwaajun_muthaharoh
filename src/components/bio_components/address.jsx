@@ -89,13 +89,20 @@ const Address = (props) => {
     };
 
     if (!isDataEmpty()) {
-      setData({
-        ...data,
+      // setData({
+      //   ...data,
+      //   present_address: fullAddress.present_address,
+      //   permenant_address: fullAddress.permenant_address,
+      // });
+
+      setData((prevData) => ({
+        ...prevData,
         present_address: fullAddress.present_address,
         permenant_address: fullAddress.permenant_address,
-      });
+      }));
+
     }
-  }, [fullAddress, setData,data]);
+  }, [fullAddress, setData]);
 
 
   const clickhandler = ({target}) => {

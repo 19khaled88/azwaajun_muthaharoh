@@ -14,12 +14,17 @@ const PersonalPage = (props) => {
   };
 
   useEffect(() => {
-    setData({
-      ...data,
-      personalInfo
-    });
+    // setData({
+    //   ...data,
+    //   personalInfo
+    // });
 
-  }, [personalInfo, setData,data]);
+    setData((prevData) => ({
+      ...prevData,
+      personalInfo
+    }));
+
+  }, [personalInfo, setData]);
 
 
   return (

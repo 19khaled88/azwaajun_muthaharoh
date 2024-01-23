@@ -13,11 +13,16 @@ const ProfessionalPage = (props) => {
   };
 
   useEffect(() => {
-    setData({
-      ...data,
-      professionalInfo,
-    });
-  }, [professionalInfo, setData,data]);
+    // setData({
+    //   ...data,
+    //   professionalInfo,
+    // });
+
+    setData((prevData) => ({
+      ...prevData,
+      professionalInfo
+    }));
+  }, [professionalInfo, setData]);
 
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
