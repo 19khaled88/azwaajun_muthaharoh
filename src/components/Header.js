@@ -51,9 +51,9 @@ const Header = () => {
             </span>
             My Account
             <ul className={`${styles.drop_menu}`}>
-              <li><a className="text-left pl-2" href="/profile/user">Profile</a></li>
-              <li><a className="text-left pl-2" href="/ui/auth/register">Register</a></li>
-              <li><a className="text-left pl-2" href="/ui/auth/login">Login</a></li>
+              <li><Link className="text-left pl-2" href="/profile/user">Profile</Link></li>
+              <li><Link className="text-left pl-2" href="/ui/auth/register">Register</Link></li>
+              <li><Link className="text-left pl-2" href="/ui/auth/login">Login</Link></li>
               
             </ul>
           </div>
