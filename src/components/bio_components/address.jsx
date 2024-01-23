@@ -95,7 +95,7 @@ const Address = (props) => {
         permenant_address: fullAddress.permenant_address,
       });
     }
-  }, [fullAddress, setData]);
+  }, [fullAddress, setData,data]);
 
 
   const clickhandler = ({target}) => {

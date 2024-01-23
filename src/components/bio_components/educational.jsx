@@ -55,7 +55,7 @@ const EducationPage = (prop) => {
           });
         
 
-    }, [educationalInfo, setData,selectedOption]);
+    }, [educationalInfo, setData,selectedOption,data]);
 
    
 

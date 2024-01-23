@@ -19,7 +19,7 @@ const PersonalPage = (props) => {
       personalInfo
     });
 
-  }, [personalInfo, setData]);
+  }, [personalInfo, setData,data]);
 
 
   return (
@@ -140,7 +140,7 @@ const PersonalPage = (props) => {
               <option value="">Selected none</option>
               <option value="Hanafi">Hanafi</option>
               <option value="Maliki">Maliki</option>
-              <option value="Shafi'i">Shafi'i</option>
+              <option value="Shafi'i">Shafi&apos;i</option>
               <option value="Hanbali">Hanbali</option>
               <option value="Salafi">Salafi</option>
             </select>

@@ -40,7 +40,7 @@ const handleAddressChange = (event) => {
             fullAddress:fullAddress
         })
     }
-  }, [fullAddress, setData]);
+  }, [fullAddress, setData,data]);
 
 
   const clickhandler = ({target}) => {

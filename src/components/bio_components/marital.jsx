@@ -17,7 +17,7 @@ const MaritalPage = (props) => {
       ...data,
       maritalInfo,
     });
-  }, [maritalInfo, setData]);
+  }, [maritalInfo, setData,data]);
 
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
@@ -111,7 +111,7 @@ const MaritalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="gift_from_bride's_family"
           >
-            Would you or your family expect any gifts from the bride's family?
+            Would you or your family expect any gifts from the bride&apos;s family?
           </label>
           <input
             className="appearance-none block bg-gray-200 text-gray-700 border rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white w-full max-w-md"

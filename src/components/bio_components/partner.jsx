@@ -17,7 +17,7 @@ const PartnerPage = (props) => {
       ...data,
       partnerInfo,
     });
-  }, [partnerInfo, setData]);
+  }, [partnerInfo, setData,data]);
 
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">

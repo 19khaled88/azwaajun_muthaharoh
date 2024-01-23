@@ -60,7 +60,7 @@ const FamilyPage = (props) => {
       },
     });
 
-  }, [familyInfo, setData]);
+  }, [familyInfo, setData,brothers,data]);
 
 
   return (
@@ -81,7 +81,7 @@ const FamilyPage = (props) => {
               className="appearance-none block bg-gray-200 text-gray-700 border rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white w-full max-w-md"
               name="father_name"
               type="text"
-              placeholder="Father's full name"
+              placeholder="Father full name"
               // value={educationalInfo.SSC}
               onChange={handleFamilyInfoChange}
             />
@@ -106,7 +106,7 @@ const FamilyPage = (props) => {
           </div>
           <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
-              Father's profession details
+              Father &apos;s profession details
             </label>
             <textarea
               name="father_profession_details"
@@ -134,7 +134,7 @@ const FamilyPage = (props) => {
               className="appearance-none block bg-gray-200 text-gray-700 border rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white w-full max-w-md"
               name="mother_name"
               type="text"
-              placeholder="Mother's full name"
+              placeholder="Mother s full name"
               // value={educationalInfo.SSC}
               onChange={handleFamilyInfoChange}
             />
@@ -159,7 +159,7 @@ const FamilyPage = (props) => {
           </div>
           <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
-              Mother's profession details
+              Mother&apos;s profession details
             </label>
             <textarea
               name="mother_profession_details"
@@ -201,7 +201,7 @@ const FamilyPage = (props) => {
           {brothers === true ? (
             <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
               <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
-                Brothers' details
+                Brothers&apos; details
               </label>
               <textarea
                 name="brothers_details"
@@ -240,7 +240,7 @@ const FamilyPage = (props) => {
           {sisters === true ? (
             <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
               <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
-                Sisters' details
+                Sisters&apos; details
               </label>
               <textarea
                 name="sisters_details"

@@ -39,7 +39,7 @@ const GeneralInfoPage = (props) => {
         generalInfo: generalInfo
       })
     }
-  }, [generalInfo ,setData])
+  }, [generalInfo ,setData,data])
 
  
   return (

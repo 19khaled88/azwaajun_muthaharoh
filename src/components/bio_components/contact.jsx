@@ -18,7 +18,7 @@ const ContactPage = (props) => {
       ...data,
       contactInfo,
     });
-  }, [contactInfo, setData]);
+  }, [contactInfo, setData,data]);
 
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
@@ -28,7 +28,7 @@ const ContactPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="candidate_name"
           >
-            Candidate's full name
+            Candidate &apos;s full name
           </label>
           <input
             className="appearance-none block bg-gray-200 text-gray-700 border rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white w-full max-w-md"
@@ -45,7 +45,7 @@ const ContactPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="gurdian_mobile"
           >
-            Gardian's mobile number
+            Gardian &apos;s mobile number
           </label>
           <input
             className="appearance-none block bg-gray-200 text-gray-700 border rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white w-full max-w-md"
