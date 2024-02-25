@@ -1,8 +1,21 @@
-import React, { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import axios from '../../axios/axiosInstance';
 
 const PartnerPage = (props) => {
-  const { data, setData } = props;
-  const [partnerInfo, setPartnerInfo] = useState({});
+  const { data, setData, setIsEmpty, setIsApi } = props;
+  const { data: session, status } = useSession();
+  const [partnerInfo, setPartnerInfo] = useState({
+    complexion:"",
+    height:"",
+    edu_qualification:"",
+    district:"",
+    marital_status:"",
+    profession:"",
+    financial_condition:"",
+    expected_Qualities:"",
+  });
 
   const handlePartnerInfoChange = (event) => {
     const { name, value } = event.target;
@@ -13,16 +26,60 @@ const PartnerPage = (props) => {
   };
 
   useEffect(() => {
-    // setData({
-    //   ...data,
-    //   partnerInfo,
-    // });
+   
+    const isDataEmpty = () => {
+      for (const key in partnerInfo) {
+        if (partnerInfo[key].trim() === "") {
+          return true; // At least one property is empty
+        }
+      }
+      return false;
+    };
+    if (isDataEmpty()) {
+      setIsEmpty(true)
+    } else if (!isDataEmpty()) {
+      setIsEmpty(false)
+      setData((prevData) => ({
+        ...prevData,
+        partnerInfo
+      }));
+      setIsApi('/partner/create')
+    }
 
-    setData((prevData) => ({
-      ...prevData,
-      partnerInfo
-    }));
-  }, [partnerInfo, setData]);
+  }, [partnerInfo, setData,setIsApi,setIsEmpty]);
+
+  useEffect(() => {
+    if (session && session.accessToken) {
+      const decoded = jwtDecode(session.accessToken);
+      axios.get(`/partner/getSingle/${decoded.id}`)
+        .then(response => {
+          let resInfo = response.data.data
+          if(resInfo === undefined){
+            console.log(resInfo)
+          }else{
+            setPartnerInfo(resInfo)
+          }
+        })
+        .catch(error => {
+          // Handle error
+          if (error.response) {
+            // The request was made, but the server responded with a status code
+            // outside of the 2xx range
+            console.log('Response data:', error.response.data);
+            console.log('Response status:', error.response.status);
+            console.log('Response headers:', error.response.headers);
+          } else if (error.request) {
+            // The request was made, but no response was received
+            console.log('No response received from the server');
+          } else {
+            // Something happened in setting up the request that triggered the error
+            console.log('Error:', error.message);
+          }
+        });
+    }
+
+  }, [session])
+
 
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
@@ -39,7 +96,7 @@ const PartnerPage = (props) => {
             name="complexion"
             type="text"
             placeholder=""
-            // value={educationalInfo.SSC}
+            value={partnerInfo.complexion}
             onChange={handlePartnerInfoChange}
           />
         </div>
@@ -55,7 +112,7 @@ const PartnerPage = (props) => {
             name="height"
             type="text"
             placeholder="5' - 5'.10''"
-            // value={educationalInfo.SSC}
+            value={partnerInfo.height}
             onChange={handlePartnerInfoChange}
           />
         </div>
@@ -72,7 +129,7 @@ const PartnerPage = (props) => {
             name="edu_qualification"
             type="text"
             placeholder=""
-            // value={educationalInfo.SSC}
+            value={partnerInfo.edu_qualification}
             onChange={handlePartnerInfoChange}
           />
         </div>
@@ -88,7 +145,7 @@ const PartnerPage = (props) => {
             name="district"
             type="text"
             placeholder=""
-            // value={educationalInfo.SSC}
+            value={partnerInfo.district}
             onChange={handlePartnerInfoChange}
           />
         </div>
@@ -105,7 +162,7 @@ const PartnerPage = (props) => {
             name="marital_status"
             type="text"
             placeholder=""
-            // value={educationalInfo.SSC}
+            value={partnerInfo.marital_status}
             onChange={handlePartnerInfoChange}
           />
         </div>
@@ -122,7 +179,7 @@ const PartnerPage = (props) => {
             name="profession"
             type="text"
             placeholder=""
-            // value={educationalInfo.SSC}
+            value={partnerInfo.profession}
             onChange={handlePartnerInfoChange}
           />
         </div>
@@ -138,7 +195,7 @@ const PartnerPage = (props) => {
             name="financial_condition"
             type="text"
             placeholder=""
-            // value={educationalInfo.SSC}
+            value={partnerInfo.financial_condition}
             onChange={handlePartnerInfoChange}
           />
         </div>
@@ -153,6 +210,7 @@ const PartnerPage = (props) => {
             onChange={handlePartnerInfoChange}
             className="textarea textarea-bordered w-full max-w-md"
             placeholder=""
+            value={partnerInfo.expected_Qualities}
           ></textarea>
         </div>
 

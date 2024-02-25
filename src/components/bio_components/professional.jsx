@@ -1,8 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import axios from '../../axios/axiosInstance';
 
 const ProfessionalPage = (props) => {
-  const { data, setData } = props;
-  const [professionalInfo, setProfessionalInfo] = useState({});
+  const { data, setData, setIsEmpty, setIsApi } = props;
+  const { data: session, status } = useSession();
+  const [professionalInfo, setProfessionalInfo] = useState({
+    income: "",
+    occupation: "",
+    occupation_description: ""
+  });
 
   const handleProfessionalInfoChange = (event) => {
     const { name, value } = event.target;
@@ -13,16 +21,59 @@ const ProfessionalPage = (props) => {
   };
 
   useEffect(() => {
-    // setData({
-    //   ...data,
-    //   professionalInfo,
-    // });
+    const isDataEmpty = () => {
+      for (const key in professionalInfo) {
+        if (professionalInfo[key].trim() === "") {
+          return true; // At least one property is empty
+        }
+      }
+      return false;
+    }
 
-    setData((prevData) => ({
-      ...prevData,
-      professionalInfo
-    }));
-  }, [professionalInfo, setData]);
+    if (isDataEmpty()) {
+      setIsEmpty(true)
+    } else if (!isDataEmpty()) {
+      setIsEmpty(false)
+      setData((prevData) => ({
+        ...prevData,
+        professionalInfo
+      }));
+      setIsApi('/professional/create')
+    }
+
+  }, [professionalInfo, setData,setIsApi,setIsEmpty]);
+
+  useEffect(() => {
+    if (session && session.accessToken) {
+      const decoded = jwtDecode(session.accessToken);
+      axios.get(`/professional/getSingle/${decoded.id}`)
+        .then(response => {
+          let resInfo = response.data.data
+          if (resInfo === undefined) {
+            console.log(resInfo)
+          } else {
+            setProfessionalInfo(resInfo)
+          }
+        })
+        .catch(error => {
+          // Handle error
+          if (error.response) {
+            // The request was made, but the server responded with a status code
+            // outside of the 2xx range
+            console.log('Response data:', error.response.data);
+            console.log('Response status:', error.response.status);
+            console.log('Response headers:', error.response.headers);
+          } else if (error.request) {
+            // The request was made, but no response was received
+            console.log('No response received from the server');
+          } else {
+            // Something happened in setting up the request that triggered the error
+            console.log('Error:', error.message);
+          }
+        });
+    }
+
+  }, [session])
 
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
@@ -35,12 +86,12 @@ const ProfessionalPage = (props) => {
             Occupation
           </label>
           <select
-            defaultValue=""
+            defaultValue={professionalInfo?.occupation != undefined | professionalInfo?.occupation != null ? professionalInfo.occupation : "Selected_none"}
             name="occupation"
             onChange={handleProfessionalInfoChange}
             className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full max-w-md"
           >
-            <option value="">Selected none</option>
+            <option value={professionalInfo?.occupation != undefined | professionalInfo?.occupation != null ? professionalInfo.occupation : "Selected_none"}>{professionalInfo?.occupation != undefined | professionalInfo?.occupation != null ? professionalInfo.occupation : "Selected_none"}</option>
             <option value="Imam">Imam</option>
             <option value="Businessman">Businessman</option>
             <option value="Engineer">Engineer</option>
@@ -60,7 +111,8 @@ const ProfessionalPage = (props) => {
             Please describe you profession
           </label>
           <textarea
-            name="occupation description"
+            value={professionalInfo.occupation_description}
+            name="occupation_description"
             onChange={handleProfessionalInfoChange}
             className="textarea textarea-bordered w-full max-w-md"
             placeholder="Like: Place/location, designation, institution name, institution work, halal profession? etc"
@@ -79,7 +131,7 @@ const ProfessionalPage = (props) => {
             name="income"
             type="text"
             placeholder="Like: 20000 taka"
-            // value={educationalInfo.SSC}
+            value={professionalInfo.income}
             onChange={handleProfessionalInfoChange}
           />
         </div>

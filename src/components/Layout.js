@@ -1,9 +1,13 @@
 import Footer from './Footer';
 import Header from './Header';
+// import Providers from './providers/Provider';
 
 const RootLayout = ({ children }) => {
     return (
-        <div className="flex flex-col min-h-screen mx-auto ">
+
+        <>
+            {/* <Providers> */}
+            <div className="flex flex-col min-h-screen mx-auto ">
             <Header />
             <div className="flex-grow">
                 
@@ -12,6 +16,10 @@ const RootLayout = ({ children }) => {
             </div>
             <Footer />
         </div>
+
+            {/* </Providers> */}
+        </>
+       
     );
 };
 

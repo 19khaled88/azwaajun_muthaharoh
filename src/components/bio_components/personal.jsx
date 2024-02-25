@@ -1,8 +1,27 @@
-import React, { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import axios from '../../axios/axiosInstance';
 
 const PersonalPage = (props) => {
-  const { data, setData } = props;
-  const [personalInfo, setPersonalInfo] = useState({});
+  const { data, setData, setIsEmpty, setIsApi } = props;
+  const { data: session, status } = useSession();
+  const [personalInfo, setPersonalInfo] = useState({
+    above_ankles: "",
+    beard: "",
+    contact_number: "",
+    deen_work: "",
+    diseases: "",
+    dress_outside: "",
+    fique: "",
+    hobbies: "",
+    islamic_books: "",
+    islamic_schoolars: "",
+    mahram_non_mahram: "",
+    pray_five_time: "",
+    recite_quran: "",
+    song_drama_movie: ""
+  });
 
 
   const handlePersonalInfoChange = (event) => {
@@ -14,17 +33,61 @@ const PersonalPage = (props) => {
   };
 
   useEffect(() => {
-    // setData({
-    //   ...data,
-    //   personalInfo
-    // });
+    const isDataEmpty = () => {
+      for (const key in personalInfo) {
+        if (personalInfo[key].trim() === "") {
+          return true; // At least one property is empty
+        }
+      }
+      return false;
+    }
 
-    setData((prevData) => ({
-      ...prevData,
-      personalInfo
-    }));
+    if (isDataEmpty()) {
 
-  }, [personalInfo, setData]);
+      setIsEmpty(true)
+    } else if (!isDataEmpty()) {
+
+      setIsEmpty(false)
+      setData((prevData) => ({
+        ...prevData,
+        personalInfo
+      }));
+      setIsApi('/personal/create')
+    }
+
+  }, [personalInfo, setData,setIsApi,setIsEmpty]);
+
+  useEffect(() => {
+    if (session && session.accessToken) {
+      const decoded = jwtDecode(session.accessToken);
+      axios.get(`/personal/getSingle/${decoded.id}`)
+        .then(response => {
+          let resInfo = response.data.data
+          if (resInfo === undefined) {
+            console.log(resInfo)
+          } else {
+            setPersonalInfo(resInfo)
+          }
+        })
+        .catch(error => {
+          // Handle error
+          if (error.response) {
+            // The request was made, but the server responded with a status code
+            // outside of the 2xx range
+            console.log('Response data:', error.response.data);
+            console.log('Response status:', error.response.status);
+            console.log('Response headers:', error.response.headers);
+          } else if (error.request) {
+            // The request was made, but no response was received
+            console.log('No response received from the server');
+          } else {
+            // Something happened in setting up the request that triggered the error
+            console.log('Error:', error.message);
+          }
+        });
+    }
+
+  }, [session])
 
 
   return (
@@ -42,7 +105,7 @@ const PersonalPage = (props) => {
             name="dress_outside"
             type="text"
             placeholder="your dressing habit when go outside"
-            // value={educationalInfo.SSC}
+            value={personalInfo?.dress_outside}
             onChange={handlePersonalInfoChange}
           />
         </div>
@@ -58,23 +121,23 @@ const PersonalPage = (props) => {
             name="beard"
             type="text"
             placeholder="like: Yes, from age 10, or 12"
-            // value={educationalInfo.SSC}
+            value={personalInfo.beard}
             onChange={handlePersonalInfoChange}
           />
         </div>
         <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
-            htmlFor="avobe_ankles"
+            htmlFor="above_ankles"
           >
             Do you wear cloths above the ankles?
           </label>
           <input
             className="appearance-none block bg-gray-200 text-gray-700 border rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white w-full max-w-md"
-            name="avobe_ankles"
+            name="above_ankles"
             type="text"
             placeholder="like: Yes "
-            // value={educationalInfo.SSC}
+            value={personalInfo.above_ankles}
             onChange={handlePersonalInfoChange}
           />
         </div>
@@ -90,7 +153,7 @@ const PersonalPage = (props) => {
             name="pray_five_time"
             type="text"
             placeholder="like: Yes, or no, since age 10 or 12"
-            // value={educationalInfo.SSC}
+            value={personalInfo.pray_five_time}
             onChange={handlePersonalInfoChange}
           />
         </div>
@@ -98,19 +161,20 @@ const PersonalPage = (props) => {
         <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
-            htmlFor="mahram_non-mahram"
+            htmlFor="mahram_non_mahram"
           >
             Do you follow mahram / non-mahram concept?
           </label>
           <input
             className="appearance-none block bg-gray-200  border rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white w-full max-w-md"
-            name="mahram_non-mahram"
+            name="mahram_non_mahram"
             type="text"
             placeholder="like: Yes / No"
-            // value={educationalInfo.SSC}
+            value={personalInfo.mahram_non_mahram}
             onChange={handlePersonalInfoChange}
           />
         </div>
+
         <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
@@ -123,35 +187,34 @@ const PersonalPage = (props) => {
             name="recite_quran"
             type="text"
             placeholder="like: Yes / No"
-            // value={educationalInfo.SSC}
+            value={personalInfo.recite_quran}
             onChange={handlePersonalInfoChange}
           />
         </div>
 
 
         <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
-            <label
-              className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
-              htmlFor="fique"
-            >
-              Which fique do you follow?
-            </label>
-            <select
-              defaultValue=""
-              name="fique"
-              onChange={handlePersonalInfoChange}
-              className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full max-w-md"
-            >
-              <option value="">Selected none</option>
-              <option value="Hanafi">Hanafi</option>
-              <option value="Maliki">Maliki</option>
-              <option value="Shafi'i">Shafi&apos;i</option>
-              <option value="Hanbali">Hanbali</option>
-              <option value="Salafi">Salafi</option>
-            </select>
-          </div>
-
-
+          <label
+            className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
+            htmlFor="fique"
+          >
+            Which fique do you follow?
+          </label>
+          <select
+            defaultValue={personalInfo?.fique != undefined | personalInfo?.fique != null ? personalInfo.fique : "Selected_none"}
+            name="fique"
+            onChange={handlePersonalInfoChange}
+            className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full max-w-md"
+          >
+            <option value={personalInfo?.fique != undefined | personalInfo?.fique != null ? personalInfo.fique : "Selected_none"}>{personalInfo?.fique != undefined | personalInfo?.fique != null ? personalInfo.fique : "Selected_none"}</option>
+            <option value="none">None of this</option>
+            <option value="Hanafi">Hanafi</option>
+            <option value="Maliki">Maliki</option>
+            <option value="Shafi'i">Shafi&apos;i</option>
+            <option value="Hanbali">Hanbali</option>
+            <option value="Salafi">Salafi</option>
+          </select>
+        </div>
 
 
         <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
@@ -166,7 +229,7 @@ const PersonalPage = (props) => {
             name="song_drama_movie"
             type="text"
             placeholder="like: Yes / No"
-            // value={educationalInfo.SSC}
+            value={personalInfo.song_drama_movie}
             onChange={handlePersonalInfoChange}
           />
         </div>
@@ -175,14 +238,14 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="diseases"
           >
-            Do you have metal or physical diseases?
+            Do you have mental or physical diseases?
           </label>
           <input
             className="appearance-none block bg-gray-200  border rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white w-full max-w-md"
             name="diseases"
             type="text"
             placeholder="like: Yes / No, if yes then write hints, diabetes"
-            // value={educationalInfo.SSC}
+            value={personalInfo.diseases}
             onChange={handlePersonalInfoChange}
           />
         </div>
@@ -199,7 +262,7 @@ const PersonalPage = (props) => {
             name="deen_work"
             type="text"
             placeholder="like: tablig"
-            // value={educationalInfo.SSC}
+            value={personalInfo.deen_work}
             onChange={handlePersonalInfoChange}
           />
         </div>
@@ -217,7 +280,7 @@ const PersonalPage = (props) => {
             name="islamic_books"
             type="text"
             placeholder=""
-            // value={educationalInfo.SSC}
+            value={personalInfo.islamic_books}
             onChange={handlePersonalInfoChange}
           />
         </div>
@@ -233,7 +296,7 @@ const PersonalPage = (props) => {
             name="islamic_schoolars"
             type="text"
             placeholder=""
-            // value={educationalInfo.SSC}
+            value={personalInfo.islamic_schoolars}
             onChange={handlePersonalInfoChange}
           />
         </div>
@@ -250,7 +313,7 @@ const PersonalPage = (props) => {
             name="hobbies"
             type="text"
             placeholder=""
-            // value={educationalInfo.SSC}
+            value={personalInfo.hobbies}
             onChange={handlePersonalInfoChange}
           />
         </div>
@@ -263,20 +326,20 @@ const PersonalPage = (props) => {
             >
               Your whatsapp number, messenger?
             </label>
-        <div>
-        <input
-              className="appearance-none block bg-gray-200  border rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white w-full max-w-md"
-              name="contact_number"
-              type="number"
-              placeholder=""
-              // value={educationalInfo.SSC}
-              onChange={handlePersonalInfoChange}
-            />
-            <p>This number will not be disclosed, only for further communication</p>
-        </div>
+            <div>
+              <input
+                className="appearance-none block bg-gray-200  border rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white w-full max-w-md"
+                name="contact_number"
+                type="number"
+                placeholder=""
+                value={personalInfo.contact_number}
+                onChange={handlePersonalInfoChange}
+              />
+              <p>Number will not be disclosed, only for further communication(Only digit allowed)</p>
+            </div>
           </div>
-          
-          
+
+
         </div>
       </div>
     </form>

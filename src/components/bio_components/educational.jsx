@@ -1,10 +1,13 @@
 //Education.jsx
+import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
+import axios from '../../axios/axiosInstance'
 import Select, { Props } from "react-select";
 
 const sampleOptions = [
     {
-        label: "Finland",
+        label: "Select multiple",
         options: [
             {
                 label: "hafej",
@@ -31,41 +34,108 @@ const sampleOptions = [
 ];
 
 const EducationPage = (prop) => {
-    const { data, setData } = prop;
-    const [selectedOption, setSelectedOption] = useState("");
-   
-    const [educationalInfo, setEducationalInfo] = useState({});
+    const { data, setData, setIsEmpty, setIsApi } = prop;
+    const [selectedOption, setSelectedOption] = useState([]);
+    const { data: session, status } = useSession();
+
+    const [educationalInfo, setEducationalInfo] = useState({
+        education_medium: "",
+        ssc_institute: "",
+        ssc_year: "",
+        ssc_department: "",
+        ssc_result: "",
+    });
 
     const handleEducationalInfoChange = (event) => {
         const { name, value } = event.target;
         setEducationalInfo({
             ...educationalInfo,
             [name]: value,
-        });
+        })
     };
 
     useEffect(() => {
-        
-        //   setData({
-        //     ...data,
-        //     educationalInfo:{
-        //         ...educationalInfo,
-        //         entitlement:{...selectedOption}
-        //     },
-        //   });
+        const isDataEmpty = () => {
+            for (const key in educationalInfo) {
+                // Convert the value to a string before calling trim()
+                const value = String(educationalInfo[key]);
+                if (value.trim() === "") {
+                    return true;
+                }
+            }
+            return false;
+        };
 
-          setData((prevData) => ({
-            ...prevData,
-            educationalInfo:{
-                ...educationalInfo,
-                entitlement:{...selectedOption}
-            },
-          }));
-        
+        if (isDataEmpty() || educationalInfo === undefined) {
+            setIsEmpty(true)
+        }
 
-    }, [educationalInfo, setData,selectedOption]);
+        if (!isDataEmpty()) {
+            setIsEmpty(false)
+            if (selectedOption.length === 0) {
+                setData((prevData) => ({
+                    ...prevData,
+                    educationalInfo: {
+                        ...educationalInfo
 
-   
+                    },
+                }));
+
+            } else {
+                const entitlementValues = selectedOption?.map(option => option.value); // Extracting values from selected options
+                setData((prevData) => ({
+                    ...prevData,
+                    educationalInfo: {
+                        ...educationalInfo,
+                        entitlement: entitlementValues, // Assigning array of values to the entitlement property
+                    },
+                }));
+            }
+            setIsApi('/edu/create')
+        }
+
+
+    }, [educationalInfo, setData, selectedOption,setIsApi,setIsEmpty]);
+
+    useEffect(() => {
+        if (session && session.accessToken) {
+            const decoded = jwtDecode(session.accessToken);
+
+            axios.get(`/edu/getSingle/${decoded.id}`)
+                .then(response => {
+                    let resInfo = response.data.data
+                    if(resInfo === undefined){
+            
+                    }else{
+                        const transformedOptions = response.data.data.entitlement.map(item=> ({
+                            label: item, // Assuming your database query result has a 'name' field
+                            value: item // Assuming your database query result has an 'id' field
+                          }));
+                          setSelectedOption(transformedOptions)
+                          setEducationalInfo(response.data.data)
+                    }
+                   
+                })
+                .catch(error => {
+                    // Handle error
+                    if (error.response) {
+                        // The request was made, but the server responded with a status code
+                        // outside of the 2xx range
+                        console.log('Response data:', error.response.data);
+                        console.log('Response status:', error.response.status);
+                        console.log('Response headers:', error.response.headers);
+                    } else if (error.request) {
+                        // The request was made, but no response was received
+                        console.log('No response received from the server');
+                    } else {
+                        // Something happened in setting up the request that triggered the error
+                        console.log('Error:', error.message);
+                    }
+                });
+        }
+
+    }, [session])
+
 
     return (
         <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
@@ -79,12 +149,12 @@ const EducationPage = (prop) => {
                         Education medium
                     </label>
                     <select
-                        defaultValue="Selected_none"
+                        defaultValue={educationalInfo?.education_medium != undefined | educationalInfo?.education_medium != null ? educationalInfo.education_medium : "Selected_none"}
                         name="education_medium"
                         onChange={handleEducationalInfoChange}
                         className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full max-w-md"
                     >
-                        <option value="">Selected none</option>
+                        <option value={educationalInfo?.education_medium != undefined | educationalInfo?.education_medium != null ? educationalInfo.education_medium : ""}>{educationalInfo?.education_medium != undefined | educationalInfo?.education_medium != null ? educationalInfo.education_medium : "Selected_none"}</option>
                         <option value="general">General</option>
                         <option value="kowmi">Kowmi</option>
                         <option value="alia">Alia</option>
@@ -107,7 +177,7 @@ const EducationPage = (prop) => {
                             name="ssc_institute"
                             type="text"
                             placeholder="Institution name you studied in"
-                            // value={educationalInfo.SSC}
+                            value={educationalInfo.ssc_institute}
                             onChange={handleEducationalInfoChange}
                         />
                     </div>
@@ -124,7 +194,7 @@ const EducationPage = (prop) => {
                             name="ssc_year"
                             type="number"
                             placeholder="Like: 2024"
-                            // value={educationalInfo.SSC}
+                            value={educationalInfo.ssc_year}
                             onChange={handleEducationalInfoChange}
                         />
                     </div>
@@ -137,12 +207,12 @@ const EducationPage = (prop) => {
                             Department
                         </label>
                         <select
-                            defaultValue="Select department"
+                            defaultValue={educationalInfo?.ssc_department != undefined | educationalInfo?.ssc_department != null ? educationalInfo.ssc_department : "Selected_none"}
                             name="ssc_department"
                             onChange={handleEducationalInfoChange}
                             className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full max-w-md"
                         >
-                            <option value="">Selected none</option>
+                            <option value={educationalInfo?.ssc_department != undefined | educationalInfo?.ssc_department != null ? educationalInfo.ssc_department : ""}>{educationalInfo?.ssc_department != undefined | educationalInfo?.ssc_department != null ? educationalInfo.ssc_department : "Selected_none"}</option>
                             <option value="Science">Science</option>
                             <option value="Business_studies">Business studies</option>
                             <option value="arts">arts</option>
@@ -158,12 +228,12 @@ const EducationPage = (prop) => {
                             Result
                         </label>
                         <select
-                            defaultValue="Select result"
+                            defaultValue={educationalInfo?.ssc_result != undefined | educationalInfo?.ssc_result != null ? educationalInfo.ssc_result : "Selected_none"}
                             name="ssc_result"
                             onChange={handleEducationalInfoChange}
                             className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full max-w-md"
                         >
-                            <option value="">Selected none</option>
+                            <option value={educationalInfo?.ssc_result != undefined | educationalInfo?.ssc_result != null ? educationalInfo.ssc_result : ""}>{educationalInfo?.ssc_result != undefined | educationalInfo?.ssc_result != null ? educationalInfo.ssc_result : "Selected_none"}</option>
 
                             <option value="A+">A+</option>
                             <option value="A">A</option>
@@ -181,6 +251,7 @@ const EducationPage = (prop) => {
                             onChange={handleEducationalInfoChange}
                             className="textarea textarea-bordered w-full max-w-md"
                             placeholder=""
+                            value={educationalInfo.ssc_other_info}
                         ></textarea>
                     </div>
                 </div>
@@ -200,12 +271,12 @@ const EducationPage = (prop) => {
                             Degree
                         </label>
                         <select
-                            defaultValue="Select degree"
+                            defaultValue={educationalInfo?.top_degree_name != undefined | educationalInfo?.top_degree_name != null ? educationalInfo.top_degree_name : "Selected None"}
                             name="top_degree_name"
                             onChange={handleEducationalInfoChange}
                             className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full max-w-md"
                         >
-                            <option value="">Selected none</option>
+                            <option value={educationalInfo?.top_degree_name != undefined | educationalInfo?.top_degree_name != null ? educationalInfo.top_degree_name : ""}>{educationalInfo?.top_degree_name != undefined | educationalInfo?.top_degree_name != null ? educationalInfo.top_degree_name : "Selected None"}</option>
                             <option value="Doctorte_degree">Doctorte degree</option>
                             <option value="post_gradution">Post_gradution</option>
                             <option value="Graduation">Graduation</option>
@@ -226,7 +297,7 @@ const EducationPage = (prop) => {
                             name="highest_degree_institute"
                             type="text"
                             placeholder="Institution name you studied in"
-                            // value={educationalInfo.SSC}
+                            value={educationalInfo.highest_degree_institute}
                             onChange={handleEducationalInfoChange}
                         />
                     </div>
@@ -242,7 +313,7 @@ const EducationPage = (prop) => {
                             name="top_degree_pass_year"
                             type="number"
                             placeholder="Like: 2024"
-                            // value={educationalInfo.SSC}
+                            value={educationalInfo.top_degree_pass_year}
                             onChange={handleEducationalInfoChange}
                         />
                     </div>
@@ -259,7 +330,7 @@ const EducationPage = (prop) => {
                             name="top_degree_subject_department"
                             type="text"
                             placeholder="Like: Accounting, Management, Physics etc"
-                            // value={educationalInfo.SSC}
+                            value={educationalInfo.top_degree_subject_department}
                             onChange={handleEducationalInfoChange}
                         />
                     </div>
@@ -272,12 +343,12 @@ const EducationPage = (prop) => {
                             Result
                         </label>
                         <select
-                            defaultValue="Select result"
+                            defaultValue={educationalInfo?.top_degree_result != undefined | educationalInfo?.top_degree_result != null ? educationalInfo.top_degree_result : "Selected None"}
                             name="top_degree_result"
                             onChange={handleEducationalInfoChange}
                             className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full max-w-md"
                         >
-                            <option value="">Selected none</option>
+                            <option value={educationalInfo?.top_degree_result != undefined | educationalInfo?.top_degree_result != null ? educationalInfo.top_degree_result : ""}>{educationalInfo?.top_degree_result != undefined | educationalInfo?.top_degree_result != null ? educationalInfo.top_degree_result : "Selected None"}</option>
 
                             <option value="A+">A+</option>
                             <option value="A">A</option>
@@ -294,6 +365,7 @@ const EducationPage = (prop) => {
                             onChange={handleEducationalInfoChange}
                             className="textarea textarea-bordered w-full max-w-md"
                             placeholder=""
+                            value={educationalInfo.top_degree_other_info}
                         ></textarea>
                     </div>
                 </div>
@@ -312,6 +384,7 @@ const EducationPage = (prop) => {
                         onChange={handleEducationalInfoChange}
                         className="textarea textarea-bordered w-full max-w-md"
                         placeholder=""
+                        value={educationalInfo.other_education_qualification}
                     ></textarea>
                 </div>
 
@@ -324,14 +397,19 @@ const EducationPage = (prop) => {
                     </label>
 
                     <Select
-                        defaultInputValue={selectedOption}
+                        value={selectedOption}
                         onChange={setSelectedOption}
                         options={sampleOptions}
+
                         isMulti
                         closeMenuOnSelect={false}
                         hideSelectedOptions={false}
                         className="input-bordered w-full max-w-md"
                     />
+                        {/* {
+                            selectedOption.map(({ value, label }, index) => <option key={index} value={value}>{label}</option>)
+                        }
+                    </Select> */}
                 </div>
             </div>
         </form>

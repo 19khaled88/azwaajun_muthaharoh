@@ -25,7 +25,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/components/DatePicker.js", "src/axios/axiosInterceptorInstance.js", "src/axios/axiosInstance.ts", "src/utils/decodeToken.ts", "src/pages/dashboard/Bio_List/index.js", "src/middleware.js"  ],
   "exclude": [
     "node_modules"
   ]

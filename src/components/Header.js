@@ -3,13 +3,44 @@ import Image from "next/image";
 import offer from "../../public/offers.png";
 import siteIcon from "../../public/siteIcon.jpg";
 import toast, { Toaster } from 'react-hot-toast';
+import { useSession } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
 import Link from "next/link";
 import styles from '../styles/header.module.css'
 import { Helmet } from "react-helmet";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 const Header = () => {
+  const router = useRouter()
+  const { data: session, status } = useSession();
+  const [currentRole, setCurrentRole] = useState('')
+
+  if (session && session.accessToken === undefined) {
+    // Call signOut function
+    signOut();
+    // Redirect or perform any other action after signing out
+    // For example, you can redirect the user to the homepage
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  // const isoDate = "2024-03-04T18:02:44.315Z";
+  // const humanReadableDate = new Date(isoDate).toLocaleString();
+  // console.log(humanReadableDate);
+
+
+  if (status == 'loading') {
+    return null
+  }
+
+
   return (
     <nav className="bg-white  shadow-2xl  bg-gradient-to-r from-emerald-500 from-90% to-emerald-500 to-20%">
-      
+
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href="#" className="flex gap-2 items-center">
           <Image
@@ -24,9 +55,9 @@ const Header = () => {
           </span>
         </Link>
         <div className="flex md:order-2 gap-2">
-          
 
-        {/* 
+
+          {/* 
           <div id="account_click" className={`${styles.dropdown}  cursor-pointer border px-3 py-1 outline-0 rounded-lg relative hidden md:block bg-emerald-500 hover:bg-white text-white hover:text-gray-500`}>
             <span className="absolute flex h-3 w-3 -top-2 right-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
@@ -44,20 +75,44 @@ const Header = () => {
             </div>
           </div> 
         */}
-         <div className={`${styles.drop} flex flex-col gap-1 divide-y-1 relative hidden md:block`}>
-          <span className="absolute flex h-3 w-3 -top-2 right-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
-            </span>
-            My Account
-            <ul className={`${styles.drop_menu}`}>
-              <li><Link className="text-left pl-2" href="/profile/user">Profile</Link></li>
-              <li><Link className="text-left pl-2" href="/ui/auth/register">Register</Link></li>
-              <li><Link className="text-left pl-2" href="/ui/auth/login">Login</Link></li>
-              
-            </ul>
-          </div>
 
+          {
+            status === 'authenticated' ? (
+              <>
+                <div className={`${styles.drops} flex flex-col gap-1 divide-y-1 relative hidden md:block`}>
+                  <span className="absolute flex h-3 w-3 -top-2 right-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+                  </span>
+                  My Account
+                  <ul className={`${styles.drop_menu}`}>
+                    <li><Link className="text-left pl-2" href="/profile/user">Profile</Link></li>
+                    <li> <button className="text-left pl-2" onClick={() => signOut()} type="button" >Logout</button> </li>
+                  </ul>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className={`${styles.drop} flex flex-col gap-1 divide-y-1 relative hidden md:block`}>
+                  <span className="absolute flex h-3 w-3 -top-2 right-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+                  </span>
+                  My Account
+                  <ul className={`${styles.drop_menu}`}>
+
+                    <li><Link className="text-left pl-2" href="/ui/auth/register">Register</Link></li>
+                    <li><Link className="text-left pl-2" href="/ui/auth/login">Login</Link></li>
+                  </ul>
+                </div>
+              </>
+            )
+          }
+
+
+
+
+          {/* for responsive screen*/}
           <button
             data-collapse-toggle="navbar-search"
             type="button"
@@ -82,6 +137,7 @@ const Header = () => {
               />
             </svg>
           </button>
+          {/* for responsive screen*/}
         </div>
 
         <div
@@ -114,7 +170,7 @@ const Header = () => {
             />
           </div> */}
 
-         
+
           <ul className="flex flex-row justify-center items-center md:gap-4 lg:gap-10 xl:gap-12 gap-3 p-4 md:p-0">
             <li className="hover:transition ease-in delay-150  hover:-translate-y-1   duration-300">
               <Link
@@ -125,14 +181,19 @@ const Header = () => {
                 Home
               </Link>
             </li>
-            <li className="hover:transition ease-in delay-150  hover:-translate-y-1   duration-300">
-              <Link
-                href="/ui/biodata"
-                className="block py-2 md:text-lg lg:text-xl pl-3 pr-4 text-white rounded font-semibold md:p-0 dark:border-gray-700"
-              >
-               Bio-Data
-              </Link>
-            </li>
+            {
+              status === 'authenticated' ? (
+                <li className="hover:transition ease-in delay-150  hover:-translate-y-1   duration-300">
+                  <Link
+                    href="/ui/biodata"
+                    className="block py-2 md:text-lg lg:text-xl pl-3 pr-4 text-white rounded font-semibold md:p-0 dark:border-gray-700"
+                  >
+                    Make-bio
+                  </Link>
+                </li>
+              ) : ""
+            }
+
             <li className="hover:transition ease-in delay-150  hover:-translate-y-1   duration-300">
               <Link
                 href="/ui/faq"
