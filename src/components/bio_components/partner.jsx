@@ -80,7 +80,7 @@ const PartnerPage = (props) => {
 
   }, [session])
 
-
+  console.log(partnerInfo)
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
       <div className="flex flex-col -mx-3 mb-6">
@@ -89,6 +89,7 @@ const PartnerPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="complexion"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Complexion
           </label>
           <input
@@ -105,6 +106,7 @@ const PartnerPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="height"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Height
           </label>
           <input
@@ -122,6 +124,7 @@ const PartnerPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="edu_qualification"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Education Qualification
           </label>
           <input
@@ -138,6 +141,7 @@ const PartnerPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="district"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             District
           </label>
           <input
@@ -149,7 +153,7 @@ const PartnerPage = (props) => {
             onChange={handlePartnerInfoChange}
           />
         </div>
-
+{/* 
         <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
@@ -165,6 +169,30 @@ const PartnerPage = (props) => {
             value={partnerInfo.marital_status}
             onChange={handlePartnerInfoChange}
           />
+        </div> */}
+
+        <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
+          <label
+            className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
+            htmlFor="marital_status"
+          >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
+            Marital status
+          </label>
+          <select
+            value={partnerInfo?.marital_status === undefined ? "Selected_none" : partnerInfo?.marital_status === null ? "Selected_none" : partnerInfo.marital_status }
+            name="marital_status"
+            onChange={handlePartnerInfoChange}
+            className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full max-w-md"
+          >
+            <option value={partnerInfo?.marital_status === undefined ? "" : partnerInfo?.marital_status === null ? "" : partnerInfo.marital_status}>{partnerInfo?.marital_status === undefined ? "Selected_none" : partnerInfo?.marital_status === null ? "Selected_none" : partnerInfo.marital_status}</option>
+            <option value="Married">Married</option>
+            <option value="Single">Single</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Widow">Widow</option>
+            <option value="Widower">Widower</option>
+           
+          </select>
         </div>
 
         <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
@@ -172,6 +200,7 @@ const PartnerPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="profession"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             profession
           </label>
           <input
@@ -188,6 +217,7 @@ const PartnerPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="financial_condition"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Financial Condition
           </label>
           <input
@@ -202,7 +232,7 @@ const PartnerPage = (props) => {
 
         <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
-            
+          <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Expected qualities of your futur life partner
           </label>
           <textarea

@@ -32,17 +32,38 @@ const Address = (props) => {
 
   const handlePresentAddressChange = (event) => {
     const { name, value } = event.target;
-    if(name === 'division' && value === ''){
+    if (name === 'division' && value === '') {
       setFullAddress({
         ...fullAddress,
-        present_address:{
+        present_address: {
           ...fullAddress.present_address,
-          division:'',
-          district:''
+          division: '',
+          district: ''
         }
       })
+    }
+    else if (name === 'division') {
+      if (value != '' && value != fullAddress.present_address.division) {
 
-    }else{
+        setFullAddress({
+          ...fullAddress,
+          present_address: {
+            ...fullAddress.present_address,
+            [name]: value,
+            district: ''
+          }
+        })
+      } else {
+        setFullAddress({
+          ...fullAddress,
+          present_address: {
+            ...fullAddress.present_address,
+            [name]: value,
+          },
+        });
+      }
+    }
+    else {
       setFullAddress({
         ...fullAddress,
         present_address: {
@@ -51,19 +72,51 @@ const Address = (props) => {
         },
       });
     }
-    
-  };
 
+  };
 
   const handlePermanentAddressChange = (event) => {
     const { name, value } = event.target;
-    setFullAddress({
-      ...fullAddress,
-      permanent_address: {
-        ...fullAddress.permanent_address,
-        [name]: value,
-      },
-    });
+
+
+    if (name === 'division' && value === '') {
+      setFullAddress({
+        ...fullAddress,
+        permanent_address: {
+          ...fullAddress.permanent_address,
+          division: '',
+          district: ''
+        },
+      });
+    } else if (name === 'division') {
+      if (value != '' && value != fullAddress.permanent_address.division) {
+        setFullAddress({
+          ...fullAddress,
+          permanent_address: {
+            ...fullAddress.permanent_address,
+            [name]: value,
+            district: ''
+          }
+        })
+      } else {
+        setFullAddress({
+          ...fullAddress,
+          permanent_address: {
+            ...fullAddress.permanent_address,
+            [name]: value,
+          },
+        });
+      }
+    }
+    else {
+      setFullAddress({
+        ...fullAddress,
+        permanent_address: {
+          ...fullAddress.permanent_address,
+          [name]: value,
+        },
+      });
+    }
   };
 
   useEffect(() => {
@@ -108,7 +161,7 @@ const Address = (props) => {
       setIsApi('/address/create')
     }
 
-  }, [fullAddress, checked, setData,setIsApi,setIsEmpty]);
+  }, [fullAddress, checked, setData, setIsApi, setIsEmpty]);
 
   useEffect(() => {
     if (session && session.accessToken) {
@@ -156,7 +209,7 @@ const Address = (props) => {
     // });
   }
 
-
+  
 
   return (
     <form className="w-full h-full mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -180,7 +233,7 @@ const Address = (props) => {
               onChange={handlePresentAddressChange}
             /> */}
             <select
-              defaultValue={fullAddress?.present_address?.division === undefined ? "Selected none" : fullAddress?.present_address?.division === null ? "Selected none" : fullAddress?.present_address?.division === '' ? "Selected none" : fullAddress?.present_address?.division}
+              value={fullAddress?.present_address?.division === undefined ? "Selected none" : fullAddress?.present_address?.division === null ? "Selected none" : fullAddress?.present_address?.division === '' ? "Selected none" : fullAddress?.present_address?.division}
               required
               name="division"
 
@@ -212,7 +265,7 @@ const Address = (props) => {
               onChange={handlePresentAddressChange}
             /> */}
             <select
-              defaultValue={fullAddress?.present_address?.district === undefined ? "Selected none" : fullAddress?.present_address?.district === null ? "Selected none" : fullAddress?.present_address?.district === '' ? "Selected none" : fullAddress?.present_address?.district}
+              value={fullAddress?.present_address?.district === undefined ? "Selected none" : fullAddress?.present_address?.district === null ? "Selected none" : fullAddress?.present_address?.district === '' ? "Selected none" : fullAddress?.present_address?.district}
               required
               name="district"
 
@@ -314,8 +367,9 @@ const Address = (props) => {
             /> */}
             <select
               disabled={checked ? true : false}
-              // defaultValue={fullAddress?.present_address?.division === undefined ? "Selected none" : fullAddress?.present_address?.division === null ? "Selected none" : fullAddress?.present_address?.division === '' ? "Selected none" : fullAddress?.present_address?.division}
-              defaultValue={checked ? "" : fullAddress.permanent_address.division}
+              value={fullAddress?.permanent_address?.division === undefined ? "Selected none" : fullAddress?.permanent_address?.division === null ? "Selected none" : fullAddress?.permanent_address?.division === '' ? "Selected none" : fullAddress?.permanent_address?.division}
+
+              // defaultValue={checked ? "" : fullAddress.permanent_address.division}
               required
               name="division"
 
@@ -338,7 +392,7 @@ const Address = (props) => {
               <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
               District
             </label>
-            <input
+            {/* <input
               disabled={checked ? true : false}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-2 px-2 mb-3 leading-tight focus:outline-none focus:bg-white"
               name="district"
@@ -347,13 +401,14 @@ const Address = (props) => {
               value={checked ? "" : fullAddress.permanent_address.district}
               // value={fullAddress.permanent_address.district}
               onChange={handlePermanentAddressChange}
-            />
-             <select
-              defaultValue={fullAddress?.permanent_address?.district === undefined ? "Selected none" : fullAddress?.permanent_address?.district === null ? "Selected none" : fullAddress?.permanent_address?.district === '' ? "Selected none" : fullAddress?.permanent_address?.district}
+            /> */}
+            <select
+              value={fullAddress?.permanent_address?.district === undefined ? "Selected none" : fullAddress?.permanent_address?.district === null ? "Selected none" : fullAddress?.permanent_address?.district === '' ? "Selected none" : fullAddress?.permanent_address?.district}
               required
+              disabled={checked ? true : false}
               name="district"
 
-              onChange={handlePresentAddressChange}
+              onChange={handlePermanentAddressChange}
               className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full"
             >
 

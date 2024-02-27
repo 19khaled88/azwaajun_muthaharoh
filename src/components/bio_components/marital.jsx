@@ -92,6 +92,7 @@ const MaritalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="guardian_agree"
           >
+             <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Do your guardians agree to your marriage?
           </label>
           <input
@@ -109,6 +110,7 @@ const MaritalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="marriage_veil"
           >
+             <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Will you be able to keep your wife in veil after marriage?
           </label>
           <input
@@ -126,6 +128,7 @@ const MaritalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="study_after_marriage"
           >
+             <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Would you like to allow your wife to study after marriage?
           </label>
           <input
@@ -143,6 +146,7 @@ const MaritalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="job_after_marriage"
           >
+             <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Would you like to allow your wife to do any job after marriage?
           </label>
           <input
@@ -159,6 +163,7 @@ const MaritalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="resite_after_marriage"
           >
+             <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             where will you reside/live with your wife after marriage?
           </label>
           <input
@@ -176,6 +181,7 @@ const MaritalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="gift_from_brides_family"
           >
+             <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Would you or your family expect any gifts from the bride&apos;s family?
           </label>
           <input
@@ -190,6 +196,7 @@ const MaritalPage = (props) => {
 
         <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
+          <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Why are you getting married? give your thoughts.
           </label>
           <textarea

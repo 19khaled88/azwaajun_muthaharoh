@@ -83,6 +83,7 @@ const ProfessionalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="occupation"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Occupation
           </label>
           <select
@@ -108,6 +109,7 @@ const ProfessionalPage = (props) => {
 
         <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
           <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
+          <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Please describe you profession
           </label>
           <textarea
@@ -124,6 +126,7 @@ const ProfessionalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="income"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Monthly Income
           </label>
           <input

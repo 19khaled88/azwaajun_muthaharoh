@@ -191,7 +191,7 @@ const BiodataPage = () => {
         },
         {
             id: 8,
-            title: 'Partner Qality'
+            title: 'Partner Quality'
         },
         {
             id: 9,

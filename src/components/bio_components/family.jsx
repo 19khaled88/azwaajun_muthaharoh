@@ -231,6 +231,7 @@ const FamilyPage = (props) => {
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="father_name"
             >
+              <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
               Father Name
             </label>
             <input
@@ -247,6 +248,7 @@ const FamilyPage = (props) => {
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="if_father_died"
             >
+              <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
               If father died or not
             </label>
             <select
@@ -262,6 +264,7 @@ const FamilyPage = (props) => {
           </div>
           <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
               Father &apos;s profession details
             </label>
             <textarea
@@ -285,6 +288,7 @@ const FamilyPage = (props) => {
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="mother_name"
             >
+              <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
               Mother name
             </label>
             <input
@@ -301,6 +305,7 @@ const FamilyPage = (props) => {
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="if_mother_died"
             >
+              <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
               If mother died or not
             </label>
             <select
@@ -316,6 +321,7 @@ const FamilyPage = (props) => {
           </div>
           <div className="px-3 flex flex-col gap-3 md:flex-row mb-3">
             <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
               Mother&apos;s profession details
             </label>
             <textarea
@@ -433,6 +439,7 @@ const FamilyPage = (props) => {
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="economy_status"
             >
+              <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
               Economy status
             </label>
             <select
@@ -450,6 +457,7 @@ const FamilyPage = (props) => {
           </div>
           <div className="px-3 flex flex-col gap-3  md:flex-row mb-3">
             <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
               short brief
             </label>
             <textarea
@@ -467,6 +475,7 @@ const FamilyPage = (props) => {
         <div className="border border-gray-300 py-2 my-2">
           <div className="px-3 flex flex-col  gap-3 md:flex-row mb-3">
             <label className="uppercase w-44 text-gray-700 text-xs font-bold mb-2">
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
               How about deen practice in house
             </label>
             <textarea

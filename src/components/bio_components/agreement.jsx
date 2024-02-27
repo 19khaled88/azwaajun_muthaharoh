@@ -7,9 +7,9 @@ const AgreementPage = (props) => {
   const { data, setData, setIsEmpty, setIsApi } = props;
   const { data: session, status } = useSession();
   const [agreementInfo, setAgreementInfo] = useState({
-    parents_aware:'',
-    information_truth:'',
-    candidate_responsibility:'',
+    parents_aware: '',
+    information_truth: '',
+    candidate_responsibility: '',
   });
 
   const handleAgreementInfoChange = (event) => {
@@ -41,7 +41,7 @@ const AgreementPage = (props) => {
       setIsApi('/agreement/create')
     }
 
-  }, [agreementInfo, setData,setIsEmpty,setIsApi]);
+  }, [agreementInfo, setData, setIsEmpty, setIsApi]);
 
   useEffect(() => {
     if (session && session.accessToken) {
@@ -49,9 +49,9 @@ const AgreementPage = (props) => {
       axios.get(`/agreement/getSingle/${decoded.id}`)
         .then(response => {
           let resInfo = response.data.data
-          if(resInfo === undefined){
-           
-          }else{
+          if (resInfo === undefined) {
+
+          } else {
             setAgreementInfo(resInfo)
           }
         })
@@ -75,6 +75,7 @@ const AgreementPage = (props) => {
 
   }, [session])
 
+
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
       <div className="flex flex-col -mx-3 mb-6">
@@ -83,15 +84,16 @@ const AgreementPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="parents_aware"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Do your parents aware of submitting biodata to our website
           </label>
           <select
-            defaultValue={agreementInfo?.parents_aware != undefined | agreementInfo?.parents_aware != null ? agreementInfo.parents_aware : "Selected_none"}
+            value={agreementInfo?.parents_aware === undefined ? "Selected_none" : agreementInfo?.parents_aware === null ? "Selected_none" : agreementInfo.parents_aware === "" ? "Selected_none" : agreementInfo.parents_aware}
             name="parents_aware"
             onChange={handleAgreementInfoChange}
             className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full max-w-md"
           >
-            <option value={agreementInfo?.parents_aware != undefined | agreementInfo?.parents_aware != null ? agreementInfo.parents_aware : "Selected_none"}>{agreementInfo?.parents_aware != undefined | agreementInfo?.parents_aware != null ? agreementInfo.parents_aware : "Selected_none"}</option>
+            <option value="">Selected none</option>
             <option value="yes">yes</option>
             <option value="No">No</option>
           </select>
@@ -101,15 +103,16 @@ const AgreementPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="information_truth"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             By Allah, testify that all the information you provided is true
           </label>
           <select
-            defaultValue={agreementInfo?.information_truth != undefined | agreementInfo?.information_truth != null ? agreementInfo.information_truth : "Selected_none"}
+            value={agreementInfo?.information_truth === undefined ? "Selected_none" : agreementInfo?.information_truth === null ? "Selected_none" : agreementInfo.information_truth === "" ? "Selected_none" : agreementInfo.information_truth}
             name="information_truth"
             onChange={handleAgreementInfoChange}
             className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full max-w-md"
           >
-            <option value={agreementInfo?.information_truth != undefined | agreementInfo?.information_truth != null ? agreementInfo.information_truth : "Selected_none"}>{agreementInfo?.information_truth != undefined | agreementInfo?.information_truth != null ? agreementInfo.information_truth : "Selected_none"}</option>
+            <option value="">Selected none</option>
             <option value="yes">yes</option>
             <option value="No">No</option>
           </select>
@@ -119,17 +122,18 @@ const AgreementPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="candidate_responsibility"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Do you agree that for your any wrongly provided info we are not responsible?
           </label>
           <select
-            defaultValue={agreementInfo?.candidate_responsibility != undefined | agreementInfo?.candidate_responsibility != null ? agreementInfo.candidate_responsibility : "Selected_none"}
+            value={agreementInfo?.candidate_responsibility === undefined ? "Selected_none" : agreementInfo?.candidate_responsibility === null ? "Selected_none" : agreementInfo.candidate_responsibility === "" ? "Selected_none" : agreementInfo.candidate_responsibility}
             name="candidate_responsibility"
             onChange={handleAgreementInfoChange}
             className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full max-w-md"
           >
-            <option value={agreementInfo?.candidate_responsibility != undefined | agreementInfo?.candidate_responsibility != null ? agreementInfo.candidate_responsibility : "Selected_none"}>{agreementInfo?.candidate_responsibility != undefined | agreementInfo?.candidate_responsibility != null ? agreementInfo.candidate_responsibility : "Selected_none"}</option>
+            <option value="">Selected none</option>
             <option value="yes">yes</option>
-            <option value="No">No</option> 
+            <option value="No">No</option>
           </select>
         </div>
       </div>

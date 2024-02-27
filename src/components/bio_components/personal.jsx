@@ -98,6 +98,7 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="dress_outside"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Dress you wear outside normally
           </label>
           <input
@@ -114,6 +115,7 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="beard"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             have beard to follow sunnah? when you maintaining it from?
           </label>
           <input
@@ -130,6 +132,7 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="above_ankles"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Do you wear cloths above the ankles?
           </label>
           <input
@@ -146,6 +149,7 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="pray_five_time"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Do you pray five times a day? since when?
           </label>
           <input
@@ -163,6 +167,7 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="mahram_non_mahram"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Do you follow mahram / non-mahram concept?
           </label>
           <input
@@ -180,6 +185,7 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="recite_quran"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Are you able to recite quran correctly?
           </label>
           <input
@@ -198,6 +204,7 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="fique"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Which fique do you follow?
           </label>
           <select
@@ -222,6 +229,7 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="song_drama_movie"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Do you watch or listen songs / drama / movies?
           </label>
           <input
@@ -238,6 +246,7 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="diseases"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Do you have mental or physical diseases?
           </label>
           <input
@@ -255,6 +264,7 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="deen_work"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             Do you involved with any deen work?
           </label>
           <input
@@ -273,6 +283,7 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="islamic_books"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             write three islamic books you have read?
           </label>
           <input
@@ -289,6 +300,7 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="islamic_schoolars"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             write three islamic schoolars name you choose or tend to follow?
           </label>
           <input
@@ -306,6 +318,7 @@ const PersonalPage = (props) => {
             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
             htmlFor="hobbies"
           >
+            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
             write your hobies, tastes, likes, dislikes, dreams etc?
           </label>
           <input
@@ -324,6 +337,7 @@ const PersonalPage = (props) => {
               className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
               htmlFor="contact_number"
             >
+              <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
               Your whatsapp number, messenger?
             </label>
             <div>

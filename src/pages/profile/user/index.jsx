@@ -3,12 +3,25 @@ import RootLayout from '@/components/Layout';
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
+import { RotatingLines } from 'react-loader-spinner';
 
 const Profile = () => {
   const { data: session, status } = useSession()
   const router = useRouter()
   if (status === 'loading') {
-    return <p>Please wait....</p>
+    return <div className="flex flex-row justify-center items-center h-screen">
+    <RotatingLines
+      visible={true}
+      height="96"
+      width="96"
+      color="grey"
+      strokeWidth="5"
+      animationDuration="0.75"
+      ariaLabel="rotating-lines-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+    />
+  </div>
   }
 
   if (status === 'unauthenticated') {

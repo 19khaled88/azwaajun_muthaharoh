@@ -107,12 +107,28 @@ const EducationPage = (prop) => {
                     if(resInfo === undefined){
             
                     }else{
-                        const transformedOptions = response.data.data.entitlement.map(item=> ({
+                        
+                        delete resInfo.createAt
+                        delete resInfo.updatedAt
+                        delete resInfo.user_id
+                        delete resInfo.id
+                        
+                        const transformedOptions = resInfo.entitlement.map(item=> ({
                             label: item, // Assuming your database query result has a 'name' field
                             value: item // Assuming your database query result has an 'id' field
                           }));
                           setSelectedOption(transformedOptions)
-                          setEducationalInfo(response.data.data)
+                          delete resInfo.entitlement
+                         for(let item in resInfo){
+                            if(resInfo[item] !== null){
+                                setEducationalInfo(prevState=>({
+                                    ...prevState,
+                                    [item]:resInfo[item]
+                                }))
+                                
+                            }
+                         }
+                          
                     }
                    
                 })
@@ -135,7 +151,8 @@ const EducationPage = (prop) => {
         }
 
     }, [session])
-
+ 
+    
 
     return (
         <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
@@ -146,6 +163,7 @@ const EducationPage = (prop) => {
                         className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
                         htmlFor="education_medium"
                     >
+                        <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
                         Education medium
                     </label>
                     <select
@@ -170,6 +188,7 @@ const EducationPage = (prop) => {
                             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
                             htmlFor="ssc_institute"
                         >
+                            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
                             Institution Name
                         </label>
                         <input
@@ -187,6 +206,7 @@ const EducationPage = (prop) => {
                             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
                             htmlFor="ssc_year"
                         >
+                            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
                             passing year
                         </label>
                         <input
@@ -204,6 +224,7 @@ const EducationPage = (prop) => {
                             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
                             htmlFor="ssc_department"
                         >
+                            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
                             Department
                         </label>
                         <select
@@ -225,6 +246,7 @@ const EducationPage = (prop) => {
                             className="uppercase w-44 text-gray-700 text-xs font-bold mb-2"
                             htmlFor="ssc_result"
                         >
+                            <abbr class="text-red-500 text-lg pr-1" title="required">*</abbr>
                             Result
                         </label>
                         <select
