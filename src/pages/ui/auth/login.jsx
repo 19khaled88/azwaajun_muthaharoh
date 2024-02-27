@@ -12,7 +12,7 @@ import { signIn } from 'next-auth/react'
 import * as yup from 'yup';
 import { useRouter,usePathname } from "next/navigation";
 import { useSession } from 'next-auth/react'
-import decodedToken from "../../../utils/decodeToken";
+// import decodedToken from "../../../utils/decodeToken";
 // let validationSchema = yup.object({
 //   email: yup.string().required(),
 //   password: yup.string().required().min(6).max(32),
@@ -35,19 +35,21 @@ const Login = () => {
   const [loading, setLoading] = useState(true)
 
 
-  const fetchData = async (session) => {
-    try {
-      const res = await decodedToken(session)
-      setCurrentRole(res.role)
-      setLoading(false)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // const fetchData = async (session) => {
+  //   try {
+  //     const res = await decodedToken(session)
+  //     setCurrentRole(res.role)
+  //     setLoading(false)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   useEffect(()=>{
-    if (session || session !== undefined) {
-      fetchData(session)
+    if (session && session.role !== undefined) {
+      // console.log(session?.role)
+      // fetchData(session)
+      setCurrentRole(session.role)
     } else {
       setLoading(true)
     }
@@ -63,29 +65,29 @@ const Login = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const handleFormSubmits = async (data) => {
-    setMessage(null)
-    const url = process.env.NEXT_PUBLIC_API_URL + '/auth/login'
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: {
-        "Accept": "application/josn",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    })
+  // const handleFormSubmits = async (data) => {
+  //   setMessage(null)
+  //   const url = process.env.NEXT_PUBLIC_API_URL + '/auth/login'
+  //   const res = await fetch(url, {
+  //     method: 'POST',
+  //     headers: {
+  //       "Accept": "application/josn",
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(data)
+  //   })
 
-    if (res.ok) {
-      console.log(res)
-      // setMessage('User logged in successfully');
-      toast.success('Successfully logged In');
-      reset();
-    } else {
-      const response = await res.json();
-      toast.error(response.message)
-      // setError('email',{message:response?.detail ?? response.message, type:'error'})
-    }
-  };
+  //   if (res.ok) {
+  //     console.log(res)
+  //     // setMessage('User logged in successfully');
+  //     toast.success('Successfully logged In');
+  //     reset();
+  //   } else {
+  //     const response = await res.json();
+  //     toast.error(response.message)
+  //     // setError('email',{message:response?.detail ?? response.message, type:'error'})
+  //   }
+  // };
 
   const handleFormSubmit = async (data) => {
     signIn('credentials', {
@@ -133,6 +135,7 @@ const Login = () => {
     return (
       <div className="w-full flex content-center justify-center py-4">
         <div className="login_container">
+
           <form
             action="#"
             onSubmit={handleSubmit(handleFormSubmit)}
@@ -177,6 +180,8 @@ const Login = () => {
               <input type="submit" name="" value="Continue" />
             </div>
           </form>
+
+
           <div className="login_option">or Connect With Social Media</div>
           <div className="login_twitter">
             <a

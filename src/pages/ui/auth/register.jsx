@@ -3,6 +3,7 @@ import RootLayout from '@/components/Layout';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { RotatingLines } from 'react-loader-spinner';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { useSession } from 'next-auth/react'
@@ -87,7 +88,19 @@ const Register = () => {
   };
 
   if (status === "loading") {
-    return <p>Loading...</p>
+    return  <div className="flex flex-row justify-center items-center h-screen">
+    <RotatingLines
+      visible={true}
+      height="96"
+      width="96"
+      color="grey"
+      strokeWidth="5"
+      animationDuration="0.75"
+      ariaLabel="rotating-lines-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+    />
+  </div>
 }
 
   if (status === 'authenticated') {
