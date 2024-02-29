@@ -14,6 +14,7 @@
     "axios": "^1.6.7",
     "date-fns": "^3.3.1",
     "jalaali-react-date-picker": "^1.0.17",
+    "jquery": "^3.7.1",
     "js-datepicker": "^5.18.2",
     "jwt-decode": "^4.0.0",
     "next": "14.0.0",

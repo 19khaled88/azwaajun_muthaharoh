@@ -11,6 +11,7 @@ import Address from '../../../components/bio_components/address'
 import AgreementPage from '../../../components/bio_components/agreement'
 import { useSession } from 'next-auth/react'
 import React, { useState } from 'react'
+import { RotatingLines } from 'react-loader-spinner';
 
 // import Address from '@/components/bio_components/addresses'
 import { jwtDecode } from "jwt-decode"
@@ -308,16 +309,28 @@ const BiodataPage = () => {
         }
     }
 
-    // console.log(data, isEmpty,isApi)
+    console.log(data, isEmpty,isApi)
 
 
     if (status === "loading") {
-        <p>Loading...</p>
+        <RotatingLines
+            visible={true}
+            height="96"
+            width="96"
+            color="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            ariaLabel="rotating-lines-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+        />
     }
 
     if (status === 'unauthenticated') {
         router.push('/ui/auth/login')
-    } else {
+    }
+
+    if (session) {
         return (
             <div className=' flex flex-col justify-center bg-gray-300 pt-10 pb-10'>
                 <div className='flex flex-row  mx-auto w-5/6 pb-10'>
@@ -356,6 +369,8 @@ const BiodataPage = () => {
             </div>
         );
     }
+
+
 }
 
 BiodataPage.getLayout = (page) => {

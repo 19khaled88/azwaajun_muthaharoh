@@ -4,7 +4,11 @@ import rightBd from '../../public/bg-1.jpg'
 import dot from '../../public/dots-removebg-preview.png'
 import axios from '../axios/axiosInstance'
 import styles from '../styles/frontPage.module.css'
+import {useRouter} from 'next/router'
+import toast from 'react-hot-toast'
+
 const FrontPage = () => {
+    const router = useRouter()
     const [searchForm, setSearchForm] = useState({
         // pre_district:'',
         // per_district:'',
@@ -19,52 +23,59 @@ const FrontPage = () => {
 
     async function onSubmit(event) {
         event.preventDefault()
-        console.log(searchForm)
-        // axios.get(`/bioData/frontEndShow`,{ searchForm })
-        axios.post(requestURL)
-        .then(response => {
-          // Handle successful response
-          // setSingleGeneralInfo(response.data.data);
-         
-          if(response === undefined){
-            
-          }else{
-            console.log(response)
-            // setGeneralInfo(resInfo)
-          }
-        })
-        .catch(error => {
-          // Handle error
-          if (error.response) {
-            // The request was made, but the server responded with a status code
-            // outside of the 2xx range
-            console.log('Response data:', error.response.data);
-            console.log('Response status:', error.response.status);
-            console.log('Response headers:', error.response.headers);
-          } else if (error.request) {
-            // The request was made, but no response was received
-            console.log('No response received from the server');
-          } else {
-            // Something happened in setting up the request that triggered the error
-            console.log('Error:', error.message);
-          }
-        });
-        
        
+        // axios.get(`/bioData/frontEndShow`,{ searchForm })
+        axios.get(requestURL)
+            .then(response => {
+                // Handle successful response
+                // setSingleGeneralInfo(response.data.data);
+
+                if (response === undefined) {
+
+                } else if(response?.data?.data) {
+                    if(response.status === 200 && response.statusText=== 'OK'  ){
+                        
+                        router.push({pathname:'/ui/candidates',query: { myData:JSON.stringify(response.data.data)}})
+                    } else{
+
+                        toast.error('Please, Try again')
+                    }
+                    // setGeneralInfo(resInfo)
+                }else{
+                    toast.error('Something unusual wrong!')
+                }
+            })
+            .catch(error => {
+                // // Handle error
+                // if (error.response) {
+                //     // The request was made, but the server responded with a status code
+                //     // outside of the 2xx range
+                //     console.log('Response data:', error.response.data);
+                //     console.log('Response status:', error.response.status);
+                //     console.log('Response headers:', error.response.headers);
+                // } else if (error.request) {
+                //     // The request was made, but no response was received
+                //     console.log('No response received from the server');
+                // } else {
+                //     // Something happened in setting up the request that triggered the error
+                //     console.log('Error:', error.message);
+                // }
+                if(error.response.status === 500){
+                   toast.error('Internal Server Error, Please try again') 
+                }
+            });
     }
 
-    const handleChange=(event)=>{
+    const handleChange = (event) => {
         const { name, value } = event.target;
         setSearchForm((prevGeneralInfo) => (
             {
-              ...prevGeneralInfo,
-              [name]: value,
+                ...prevGeneralInfo,
+                [name]: value,
             }
-          ))
+        ))
     }
-    
-
-    
+//    console.log('loaded')
 
     return (
         <div className='relative '>
@@ -93,11 +104,11 @@ const FrontPage = () => {
                             <div className="grid grid-cols-2 gap-3 mb-3">
                                 <div className=''>
                                     <label htmlFor="pre_district" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">District(present)</label>
-                                    <select 
-                                    onChange={handleChange} 
-                                    defaultValue="Select district" 
-                                    name='pre_district'
-                                    className="border rounded-md border-teal-600 hover:border-pink-500 w-full max-w-xs h-8 shadow-xl">
+                                    <select
+                                        onChange={handleChange}
+                                        defaultValue="Select district"
+                                        name='pre_district'
+                                        className="border rounded-md border-teal-600 hover:border-pink-500 w-full max-w-xs h-8 shadow-xl">
                                         <option disabled>Select district</option>
                                         <option value="Chittagong">Chittagong</option>
                                         <option value="Dhaka">Dhaka</option>
@@ -111,11 +122,11 @@ const FrontPage = () => {
                                 </div>
                                 <div className=''>
                                     <label htmlFor="per_district" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">District(permanent)</label>
-                                    <select 
-                                    onChange={handleChange} 
-                                    defaultValue="Select district" 
-                                    name='per_district'
-                                    className="border rounded-md border-teal-600 hover:border-pink-500 w-full max-w-xs h-8 shadow-xl">
+                                    <select
+                                        onChange={handleChange}
+                                        defaultValue="Select district"
+                                        name='per_district'
+                                        className="border rounded-md border-teal-600 hover:border-pink-500 w-full max-w-xs h-8 shadow-xl">
                                         <option disabled>Select district</option>
                                         <option value="Chittagong">Chittagong</option>
                                         <option value="Dhaka">Dhaka</option>
@@ -131,11 +142,11 @@ const FrontPage = () => {
                             <div className="grid grid-cols-2 gap-3 mb-5">
                                 <div className=''>
                                     <label htmlFor="age" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Age range</label>
-                                    <select 
-                                    onChange={handleChange} 
-                                    defaultValue="Select All" 
-                                    name='age'
-                                    className="border rounded-md border-teal-600 hover:border-pink-500  w-full max-w-xs h-8 shadow-xl">
+                                    <select
+                                        onChange={handleChange}
+                                        defaultValue="Select All"
+                                        name='age'
+                                        className="border rounded-md border-teal-600 hover:border-pink-500  w-full max-w-xs h-8 shadow-xl">
                                         <option disabled>Select All</option>
                                         <option value="15-20"> 15-20</option>
                                         <option value="20-25"> 20-25</option>
@@ -146,26 +157,26 @@ const FrontPage = () => {
                                 </div>
                                 <div>
                                     <label htmlFor="candidate" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Candidate</label>
-                                    <select 
-                                    defaultValue="Select Candidate" 
-                                    onChange={handleChange} 
-                                    name='candidate'
-                                    className="border rounded-md border-teal-600 hover:border-pink-500 w-full max-w-xs h-8 shadow-xl">
+                                    <select
+                                        defaultValue="Select Candidate"
+                                        onChange={handleChange}
+                                        name='candidate'
+                                        className="border rounded-md border-teal-600 hover:border-pink-500 w-full max-w-xs h-8 shadow-xl">
                                         <option disabled>Select Candidate</option>
                                         <option value="Groom">Groom</option>
                                         <option value="Bride">Bride</option>
                                     </select>
                                 </div>
-                            
+
                             </div>
                             <div className="grid grid-cols-2 gap-3 mb-5">
                                 <div className=''>
                                     <label htmlFor="special" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Special</label>
-                                    <select 
-                                    onChange={handleChange} 
-                                    defaultValue="Select All" 
-                                    name='special'
-                                    className="border rounded-md border-teal-600 hover:border-pink-500 w-full max-w-xs h-8 shadow-xl">
+                                    <select
+                                        onChange={handleChange}
+                                        defaultValue="Select All"
+                                        name='special'
+                                        className="border rounded-md border-teal-600 hover:border-pink-500 w-full max-w-xs h-8 shadow-xl">
                                         <option disabled >Select All</option>
                                         <option value="Masna">Masna</option>
                                         <option value="Sulasa">Sulasa</option>
@@ -175,11 +186,11 @@ const FrontPage = () => {
                                 </div>
                                 <div>
                                     <label htmlFor="marital status" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Marital status</label>
-                                    <select 
-                                    onChange={handleChange} 
-                                    defaultValue="Select All" 
-                                    name='marital_status'
-                                    className="border rounded-md border-teal-600 hover:border-pink-500  w-full max-w-xs h-8 shadow-xl">
+                                    <select
+                                        onChange={handleChange}
+                                        defaultValue="Select All"
+                                        name='marital_status'
+                                        className="border rounded-md border-teal-600 hover:border-pink-500  w-full max-w-xs h-8 shadow-xl">
                                         <option disabled >Select All</option>
                                         <option value="Single">Single</option>
                                         <option value="Married">Married</option>

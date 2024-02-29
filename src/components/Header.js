@@ -32,6 +32,11 @@ const Header = () => {
   // const humanReadableDate = new Date(isoDate).toLocaleString();
   // console.log(humanReadableDate);
 
+  const handleSignOut = ()=>{
+    signOut({ redirect: false }).then(() => {
+      router.push("/"); // Redirect to the dashboard page after signing out
+  })
+  }
 
   if (status == 'loading') {
     return null
@@ -86,8 +91,8 @@ const Header = () => {
                   </span>
                   My Account
                   <ul className={`${styles.drop_menu}`}>
-                    <li><Link className="text-left pl-2" href="/profile/user">Profile</Link></li>
-                    <li> <button className="text-left pl-2" onClick={() => signOut()} type="button" >Logout</button> </li>
+                    <li><Link className="text-left pl-2" href="/ui/profile/user">Profile</Link></li>
+                    <li> <button className="text-left pl-2" onClick={() => handleSignOut()} type="button" >Logout</button> </li>
                   </ul>
                 </div>
               </>

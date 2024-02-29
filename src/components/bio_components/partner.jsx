@@ -81,6 +81,7 @@ const PartnerPage = (props) => {
   }, [session])
 
   console.log(partnerInfo)
+ 
   return (
     <form className="w-full h-full  mx-auto bg-white shadow-md rounded-tr-md rounded-br-md px-8 pt-6 pb-8 ">
       <div className="flex flex-col -mx-3 mb-6">
@@ -185,7 +186,7 @@ const PartnerPage = (props) => {
             onChange={handlePartnerInfoChange}
             className="border rounded-md border-teal-600 hover:border-pink-500 h-9 pl-1 shadow-xl input input-bordered w-full max-w-md"
           >
-            <option value={partnerInfo?.marital_status === undefined ? "" : partnerInfo?.marital_status === null ? "" : partnerInfo.marital_status}>{partnerInfo?.marital_status === undefined ? "Selected_none" : partnerInfo?.marital_status === null ? "Selected_none" : partnerInfo.marital_status}</option>
+            <option value="">Selected none</option>
             <option value="Married">Married</option>
             <option value="Single">Single</option>
             <option value="Divorced">Divorced</option>

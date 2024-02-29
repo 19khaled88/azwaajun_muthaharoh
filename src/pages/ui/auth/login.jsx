@@ -4,13 +4,13 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook } from "react-icons/im";
-import { RotatingLines } from 'react-loader-spinner';
+import { RotatingLines, ColorRing } from 'react-loader-spinner';
 import toast from 'react-hot-toast';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react'
 import * as yup from 'yup';
-import { useRouter,usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useSession } from 'next-auth/react'
 // import decodedToken from "../../../utils/decodeToken";
 // let validationSchema = yup.object({
@@ -32,7 +32,8 @@ const Login = () => {
   const [message, setMessage] = useState(null)
   const [currentRole, setCurrentRole] = useState('')
   const { data: session, status } = useSession();
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
+
 
 
   // const fetchData = async (session) => {
@@ -45,19 +46,18 @@ const Login = () => {
   //   }
   // }
 
-  useEffect(()=>{
+  useEffect(() => {
     if (session && session.role !== undefined) {
       // console.log(session?.role)
       // fetchData(session)
       setCurrentRole(session.role)
-    } else {
-      setLoading(true)
     }
-  },[session])
+  }, [session])
 
   const {
     setError,
     register,
+
     reset,
     handleSubmit,
     formState: { errors },
@@ -90,25 +90,30 @@ const Login = () => {
   // };
 
   const handleFormSubmit = async (data) => {
+    setLoading(true)
     signIn('credentials', {
       email: data.email,
       password: data.password,
+
       redirect: false,
       callbackUrl: '/'
     }).then((res) => {
       if (res?.error && !res.ok) {
         setError('email', { message: 'Somthing went wrong', type: 'error' })
         toast.error('Email or Password wrong')
-      } else  {
+        setLoading(false)
+      } else {
+        setLoading(false)
         toast.success('Welcome, login successful')
         // router.push('/profile/user')
       }
     })
   }
 
-  // console.log(currentRole)
 
-  if (status === "loading" ) {
+  // console.log(session, status)
+
+  if (status === "loading") {
     return (
       <div className="flex flex-row justify-center items-center h-screen">
         <RotatingLines
@@ -129,8 +134,8 @@ const Login = () => {
   if (status === 'authenticated' && currentRole && currentRole === 'ADMIN') {
     // router.push('/')
     router.push('/dashboard')
-  } else if(status === 'authenticated' && currentRole && currentRole !== 'ADMIN'){
-    router.push('/profile/user')
+  } else if (status === 'authenticated' && currentRole && currentRole !== 'ADMIN') {
+    router.push('/ui/profile/user')
   } else {
     return (
       <div className="w-full flex content-center justify-center py-4">
@@ -177,7 +182,27 @@ const Login = () => {
             </Link>
 
             <div className="login_input-box login_button">
-              <input type="submit" name="" value="Continue" />
+              {
+                loading ? (
+                  <div className="relative h-12 ">
+                    <div className="absolute inset-y-0 left-5 w-16">
+                      <ColorRing
+                        visible={true}
+                        height="45"
+                        width="40"
+                        ariaLabel="color-ring-loading"
+                        wrapperStyle={{}}
+                        wrapperClass="color-ring-wrapper"
+                        colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+                      />
+                    </div>
+                    <input type="submit" name="" value="Continue" />
+
+                  </div>
+                ) :
+                  <input type="submit" name="" value="Continue" />
+              }
+
             </div>
           </form>
 

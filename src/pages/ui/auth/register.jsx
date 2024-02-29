@@ -1,13 +1,13 @@
 'use client'
 import RootLayout from '@/components/Layout';
-import React, { useState } from 'react';
-import toast from 'react-hot-toast';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { RotatingLines } from 'react-loader-spinner';
-import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
-import { useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { RotatingLines } from 'react-loader-spinner';
+import * as yup from 'yup';
 
 const validationSchema = yup
   .object()
@@ -16,7 +16,6 @@ const validationSchema = yup
     password: yup.string().required('Password is required').min(6).max(32),
   })
   .required()
-
 
 
 const Register = () => {
@@ -52,7 +51,7 @@ const Register = () => {
       if (res.ok) {
         // setMessage('User registered successfully');
         
-        toast.success('Successfully logged In');
+        toast.success('User created successfully');
         reset();
       } else {
         const response = await res.json();
