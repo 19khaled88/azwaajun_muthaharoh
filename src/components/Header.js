@@ -46,7 +46,7 @@ const Header = () => {
   return (
     <nav className="bg-white  shadow-2xl  bg-gradient-to-r from-emerald-500 from-90% to-emerald-500 to-20%">
 
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href="#" className="flex gap-2 items-center">
           <Image
             src={siteIcon}
